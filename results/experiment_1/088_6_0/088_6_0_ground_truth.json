@@ -1,0 +1,720 @@
+{
+  "source_file": "models/experiment_1_sanity/088_6_0.aeon",
+  "model_name": "088_6_0",
+  "total_genes": 6,
+  "total_update_functions": 6,
+  "total_inputs": 0,
+  "input_nodes": [],
+  "genes": [
+    {
+      "name": "v_Neural_Precursor",
+      "is_input": false,
+      "update_function": "v_elavl3_HuC",
+      "regulators": [
+        {
+          "name": "v_elavl3_HuC",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_elavl3_HuC=0": 0,
+        "v_elavl3_HuC=1": 1
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_Progenitor",
+      "is_input": false,
+      "update_function": "(!v_her6 & v_zic5) | v_her6",
+      "regulators": [
+        {
+          "name": "v_her6",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_zic5",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_her6=0, v_zic5=0": 0,
+        "v_her6=0, v_zic5=1": 1,
+        "v_her6=1, v_zic5=0": 1,
+        "v_her6=1, v_zic5=1": 1
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_elavl3_HuC",
+      "is_input": false,
+      "update_function": "!v_miR_9 & !v_Progenitor",
+      "regulators": [
+        {
+          "name": "v_Progenitor",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_miR_9",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Progenitor=0, v_miR_9=0": 1,
+        "v_Progenitor=0, v_miR_9=1": 0,
+        "v_Progenitor=1, v_miR_9=0": 0,
+        "v_Progenitor=1, v_miR_9=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_her6",
+      "is_input": false,
+      "update_function": "!v_miR_9 & !v_Neural_Precursor",
+      "regulators": [
+        {
+          "name": "v_Neural_Precursor",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_miR_9",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Neural_Precursor=0, v_miR_9=0": 1,
+        "v_Neural_Precursor=0, v_miR_9=1": 0,
+        "v_Neural_Precursor=1, v_miR_9=0": 0,
+        "v_Neural_Precursor=1, v_miR_9=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_miR_9",
+      "is_input": false,
+      "update_function": "!v_her6 & !v_Neural_Precursor",
+      "regulators": [
+        {
+          "name": "v_Neural_Precursor",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_her6",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Neural_Precursor=0, v_her6=0": 1,
+        "v_Neural_Precursor=0, v_her6=1": 0,
+        "v_Neural_Precursor=1, v_her6=0": 0,
+        "v_Neural_Precursor=1, v_her6=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_zic5",
+      "is_input": false,
+      "update_function": "!v_miR_9 & !v_Neural_Precursor",
+      "regulators": [
+        {
+          "name": "v_Neural_Precursor",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_miR_9",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Neural_Precursor=0, v_miR_9=0": 1,
+        "v_Neural_Precursor=0, v_miR_9=1": 0,
+        "v_Neural_Precursor=1, v_miR_9=0": 0,
+        "v_Neural_Precursor=1, v_miR_9=1": 0
+      },
+      "truth_table_size": 4
+    }
+  ],
+  "experiment_params": {
+    "N": 5,
+    "K": 10
+  },
+  "experiments": [
+    {
+      "id": 0,
+      "K": 10,
+      "init_state": {
+        "v_Neural_Precursor": 1,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 0,
+        "v_her6": 1,
+        "v_miR_9": 0,
+        "v_zic5": 1
+      },
+      "final_state": {
+        "v_Neural_Precursor": 0,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 0,
+        "v_her6": 1,
+        "v_miR_9": 1,
+        "v_zic5": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 0,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 1,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "K": 10,
+      "init_state": {
+        "v_Neural_Precursor": 0,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 0,
+        "v_her6": 0,
+        "v_miR_9": 0,
+        "v_zic5": 0
+      },
+      "final_state": {
+        "v_Neural_Precursor": 0,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 1,
+        "v_her6": 1,
+        "v_miR_9": 1,
+        "v_zic5": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "K": 10,
+      "init_state": {
+        "v_Neural_Precursor": 1,
+        "v_Progenitor": 1,
+        "v_elavl3_HuC": 1,
+        "v_her6": 1,
+        "v_miR_9": 1,
+        "v_zic5": 0
+      },
+      "final_state": {
+        "v_Neural_Precursor": 1,
+        "v_Progenitor": 1,
+        "v_elavl3_HuC": 0,
+        "v_her6": 0,
+        "v_miR_9": 0,
+        "v_zic5": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "K": 10,
+      "init_state": {
+        "v_Neural_Precursor": 1,
+        "v_Progenitor": 1,
+        "v_elavl3_HuC": 0,
+        "v_her6": 0,
+        "v_miR_9": 0,
+        "v_zic5": 0
+      },
+      "final_state": {
+        "v_Neural_Precursor": 0,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 0,
+        "v_her6": 0,
+        "v_miR_9": 0,
+        "v_zic5": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 1,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "K": 10,
+      "init_state": {
+        "v_Neural_Precursor": 1,
+        "v_Progenitor": 1,
+        "v_elavl3_HuC": 0,
+        "v_her6": 1,
+        "v_miR_9": 0,
+        "v_zic5": 1
+      },
+      "final_state": {
+        "v_Neural_Precursor": 0,
+        "v_Progenitor": 0,
+        "v_elavl3_HuC": 0,
+        "v_her6": 1,
+        "v_miR_9": 1,
+        "v_zic5": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Neural_Precursor": 1,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 0,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 1,
+          "v_elavl3_HuC": 0,
+          "v_her6": 0,
+          "v_miR_9": 0,
+          "v_zic5": 0
+        },
+        {
+          "v_Neural_Precursor": 0,
+          "v_Progenitor": 0,
+          "v_elavl3_HuC": 0,
+          "v_her6": 1,
+          "v_miR_9": 1,
+          "v_zic5": 1
+        }
+      ]
+    }
+  ]
+}

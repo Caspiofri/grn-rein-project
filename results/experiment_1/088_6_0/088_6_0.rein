@@ -1,0 +1,163 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_Neural_Precursor[-+] (0..17); v_Progenitor[-+] (0..17); v_elavl3_HuC[-+] (0..17); v_her6[-+] (0..17); v_miR_9[-+] (0..17); v_zic5[-+] (0..17);
+
+v_her6 v_miR_9 negative;
+v_Neural_Precursor v_miR_9 negative;
+v_miR_9 v_her6 negative;
+v_Neural_Precursor v_her6 negative;
+v_miR_9 v_zic5 negative;
+v_Neural_Precursor v_zic5 negative;
+v_miR_9 v_elavl3_HuC negative;
+v_Progenitor v_elavl3_HuC negative;
+v_her6 v_Progenitor positive;
+v_zic5 v_Progenitor positive;
+v_elavl3_HuC v_Neural_Precursor positive;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[10] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_Neural_Precursor = 1 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 1 and
+  v_miR_9 = 0 and
+  v_zic5 = 1
+};
+
+$FIN0 := {
+  v_Neural_Precursor = 0 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 1 and
+  v_miR_9 = 1 and
+  v_zic5 = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[10] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_Neural_Precursor = 0 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 0 and
+  v_miR_9 = 0 and
+  v_zic5 = 0
+};
+
+$FIN1 := {
+  v_Neural_Precursor = 0 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 1 and
+  v_her6 = 1 and
+  v_miR_9 = 1 and
+  v_zic5 = 1
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[10] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_Neural_Precursor = 1 and
+  v_Progenitor = 1 and
+  v_elavl3_HuC = 1 and
+  v_her6 = 1 and
+  v_miR_9 = 1 and
+  v_zic5 = 0
+};
+
+$FIN2 := {
+  v_Neural_Precursor = 1 and
+  v_Progenitor = 1 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 0 and
+  v_miR_9 = 0 and
+  v_zic5 = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[10] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_Neural_Precursor = 1 and
+  v_Progenitor = 1 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 0 and
+  v_miR_9 = 0 and
+  v_zic5 = 0
+};
+
+$FIN3 := {
+  v_Neural_Precursor = 0 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 0 and
+  v_miR_9 = 0 and
+  v_zic5 = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[10] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_Neural_Precursor = 1 and
+  v_Progenitor = 1 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 1 and
+  v_miR_9 = 0 and
+  v_zic5 = 1
+};
+
+$FIN4 := {
+  v_Neural_Precursor = 0 and
+  v_Progenitor = 0 and
+  v_elavl3_HuC = 0 and
+  v_her6 = 1 and
+  v_miR_9 = 1 and
+  v_zic5 = 1
+};
+
+$NoKnockDowns := {
+  KO(v_Neural_Precursor) = 0 and
+  KO(v_Progenitor) = 0 and
+  KO(v_elavl3_HuC) = 0 and
+  KO(v_her6) = 0 and
+  KO(v_miR_9) = 0 and
+  KO(v_zic5) = 0
+};
+
+$NoOverExpression := {
+  FE(v_Neural_Precursor) = 0 and
+  FE(v_Progenitor) = 0 and
+  FE(v_elavl3_HuC) = 0 and
+  FE(v_her6) = 0 and
+  FE(v_miR_9) = 0 and
+  FE(v_zic5) = 0
+};
+

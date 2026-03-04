@@ -1,5 +1,4 @@
 rein_files/
-*.rein
 *.log
 __pycache__/
 *.pyc

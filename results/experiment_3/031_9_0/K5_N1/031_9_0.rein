@@ -1,0 +1,87 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_ACE2[-+] (0..17); v_CLN3[-+] (0..17); v_HCM1[-+] (0..17); v_MBF[-+] (0..17); v_SBF[-+] (0..17); v_SFF[-+] (0..17); v_SWI5[-+] (0..17); v_YHP1[-+] (0..17); v_YOX1[-+] (0..17);
+
+v_SFF v_SWI5 positive;
+v_SWI5 v_CLN3 positive;
+v_ACE2 v_CLN3 positive;
+v_YHP1 v_CLN3 negative;
+v_YOX1 v_CLN3 negative;
+v_SBF v_YOX1 positive;
+v_MBF v_YOX1 positive;
+v_YHP1 v_SBF negative;
+v_CLN3 v_SBF positive;
+v_MBF v_SBF positive;
+v_YOX1 v_SBF negative;
+v_SFF v_ACE2 positive;
+v_SBF v_HCM1 positive;
+v_MBF v_HCM1 positive;
+v_SBF v_YHP1 positive;
+v_MBF v_YHP1 positive;
+v_SBF v_SFF positive;
+v_HCM1 v_SFF positive;
+v_CLN3 v_MBF positive;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[5] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_ACE2 = 0 and
+  v_CLN3 = 0 and
+  v_HCM1 = 1 and
+  v_MBF = 0 and
+  v_SBF = 1 and
+  v_SFF = 0 and
+  v_SWI5 = 0 and
+  v_YHP1 = 1 and
+  v_YOX1 = 1
+};
+
+$FIN0 := {
+  v_ACE2 = 0 and
+  v_CLN3 = 0 and
+  v_HCM1 = 1 and
+  v_MBF = 0 and
+  v_SBF = 1 and
+  v_SFF = 0 and
+  v_SWI5 = 0 and
+  v_YHP1 = 1 and
+  v_YOX1 = 1
+};
+
+$NoKnockDowns := {
+  KO(v_ACE2) = 0 and
+  KO(v_CLN3) = 0 and
+  KO(v_HCM1) = 0 and
+  KO(v_MBF) = 0 and
+  KO(v_SBF) = 0 and
+  KO(v_SFF) = 0 and
+  KO(v_SWI5) = 0 and
+  KO(v_YHP1) = 0 and
+  KO(v_YOX1) = 0
+};
+
+$NoOverExpression := {
+  FE(v_ACE2) = 0 and
+  FE(v_CLN3) = 0 and
+  FE(v_HCM1) = 0 and
+  FE(v_MBF) = 0 and
+  FE(v_SBF) = 0 and
+  FE(v_SFF) = 0 and
+  FE(v_SWI5) = 0 and
+  FE(v_YHP1) = 0 and
+  FE(v_YOX1) = 0
+};
+

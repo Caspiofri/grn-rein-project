@@ -1,0 +1,2835 @@
+{
+  "source_file": "models/experiment_1_sanity/007_5_0.aeon",
+  "model_name": "007_5_0",
+  "total_genes": 5,
+  "total_update_functions": 5,
+  "total_inputs": 0,
+  "input_nodes": [],
+  "genes": [
+    {
+      "name": "v_Coup_fti",
+      "is_input": false,
+      "update_function": "!(v_Fgf8 | v_Sp8) | !(v_Sp8 | v_Fgf8)",
+      "regulators": [
+        {
+          "name": "v_Fgf8",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Sp8",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Fgf8=0, v_Sp8=0": 1,
+        "v_Fgf8=0, v_Sp8=1": 0,
+        "v_Fgf8=1, v_Sp8=0": 0,
+        "v_Fgf8=1, v_Sp8=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_Emx2",
+      "is_input": false,
+      "update_function": "v_Coup_fti & !(v_Fgf8 | v_Sp8 | v_Pax6)",
+      "regulators": [
+        {
+          "name": "v_Coup_fti",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_Fgf8",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Pax6",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Sp8",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 4,
+      "truth_table": {
+        "v_Coup_fti=0, v_Fgf8=0, v_Pax6=0, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Fgf8=0, v_Pax6=0, v_Sp8=1": 0,
+        "v_Coup_fti=0, v_Fgf8=0, v_Pax6=1, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Fgf8=0, v_Pax6=1, v_Sp8=1": 0,
+        "v_Coup_fti=0, v_Fgf8=1, v_Pax6=0, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Fgf8=1, v_Pax6=0, v_Sp8=1": 0,
+        "v_Coup_fti=0, v_Fgf8=1, v_Pax6=1, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Fgf8=1, v_Pax6=1, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Fgf8=0, v_Pax6=0, v_Sp8=0": 1,
+        "v_Coup_fti=1, v_Fgf8=0, v_Pax6=0, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Fgf8=0, v_Pax6=1, v_Sp8=0": 0,
+        "v_Coup_fti=1, v_Fgf8=0, v_Pax6=1, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Fgf8=1, v_Pax6=0, v_Sp8=0": 0,
+        "v_Coup_fti=1, v_Fgf8=1, v_Pax6=0, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Fgf8=1, v_Pax6=1, v_Sp8=0": 0,
+        "v_Coup_fti=1, v_Fgf8=1, v_Pax6=1, v_Sp8=1": 0
+      },
+      "truth_table_size": 16
+    },
+    {
+      "name": "v_Fgf8",
+      "is_input": false,
+      "update_function": "v_Fgf8 & v_Sp8 & !v_Emx2",
+      "regulators": [
+        {
+          "name": "v_Emx2",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Fgf8",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_Sp8",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 3,
+      "truth_table": {
+        "v_Emx2=0, v_Fgf8=0, v_Sp8=0": 0,
+        "v_Emx2=0, v_Fgf8=0, v_Sp8=1": 0,
+        "v_Emx2=0, v_Fgf8=1, v_Sp8=0": 0,
+        "v_Emx2=0, v_Fgf8=1, v_Sp8=1": 1,
+        "v_Emx2=1, v_Fgf8=0, v_Sp8=0": 0,
+        "v_Emx2=1, v_Fgf8=0, v_Sp8=1": 0,
+        "v_Emx2=1, v_Fgf8=1, v_Sp8=0": 0,
+        "v_Emx2=1, v_Fgf8=1, v_Sp8=1": 0
+      },
+      "truth_table_size": 8
+    },
+    {
+      "name": "v_Pax6",
+      "is_input": false,
+      "update_function": "v_Sp8 & !(v_Emx2 | v_Coup_fti)",
+      "regulators": [
+        {
+          "name": "v_Coup_fti",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Emx2",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Sp8",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 3,
+      "truth_table": {
+        "v_Coup_fti=0, v_Emx2=0, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Emx2=0, v_Sp8=1": 1,
+        "v_Coup_fti=0, v_Emx2=1, v_Sp8=0": 0,
+        "v_Coup_fti=0, v_Emx2=1, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Emx2=0, v_Sp8=0": 0,
+        "v_Coup_fti=1, v_Emx2=0, v_Sp8=1": 0,
+        "v_Coup_fti=1, v_Emx2=1, v_Sp8=0": 0,
+        "v_Coup_fti=1, v_Emx2=1, v_Sp8=1": 0
+      },
+      "truth_table_size": 8
+    },
+    {
+      "name": "v_Sp8",
+      "is_input": false,
+      "update_function": "v_Fgf8 & !v_Emx2",
+      "regulators": [
+        {
+          "name": "v_Emx2",
+          "edge_signs": [
+            "negative"
+          ]
+        },
+        {
+          "name": "v_Fgf8",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_Emx2=0, v_Fgf8=0": 0,
+        "v_Emx2=0, v_Fgf8=1": 1,
+        "v_Emx2=1, v_Fgf8=0": 0,
+        "v_Emx2=1, v_Fgf8=1": 0
+      },
+      "truth_table_size": 4
+    }
+  ],
+  "experiment_params": {
+    "N": 20,
+    "K": 15
+  },
+  "experiments": [
+    {
+      "id": 0,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "final_state": {
+        "v_Coup_fti": 1,
+        "v_Emx2": 1,
+        "v_Fgf8": 0,
+        "v_Pax6": 0,
+        "v_Sp8": 0
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 0,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        },
+        {
+          "v_Coup_fti": 1,
+          "v_Emx2": 1,
+          "v_Fgf8": 0,
+          "v_Pax6": 0,
+          "v_Sp8": 0
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "K": 15,
+      "init_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 0,
+        "v_Sp8": 1
+      },
+      "final_state": {
+        "v_Coup_fti": 0,
+        "v_Emx2": 0,
+        "v_Fgf8": 1,
+        "v_Pax6": 1,
+        "v_Sp8": 1
+      },
+      "full_trajectory": [
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 0,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        },
+        {
+          "v_Coup_fti": 0,
+          "v_Emx2": 0,
+          "v_Fgf8": 1,
+          "v_Pax6": 1,
+          "v_Sp8": 1
+        }
+      ]
+    }
+  ]
+}

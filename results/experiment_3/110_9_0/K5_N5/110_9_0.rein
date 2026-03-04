@@ -1,0 +1,200 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_CckA[-+] (0..17); v_ChpT[-+] (0..17); v_ClpXP_RcdA[-+] (0..17); v_CpdR[-+] (0..17); v_CtrAb[-+] (0..17); v_DivJ[-+] (0..17); v_DivK[-+] (0..17); v_DivL[-+] (0..17); v_PleC[-+] (0..17);
+
+v_ChpT v_CtrAb positive;
+v_ClpXP_RcdA v_CtrAb negative;
+v_PleC v_DivK negative;
+v_DivJ v_DivK positive;
+v_DivK v_PleC negative;
+v_DivK v_DivJ positive;
+v_PleC v_DivJ negative;
+v_DivK v_DivL negative;
+v_DivL v_CckA positive;
+v_CckA v_ChpT positive;
+v_ChpT v_CpdR positive;
+v_CpdR v_ClpXP_RcdA negative;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[5] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_CckA = 0 and
+  v_ChpT = 0 and
+  v_ClpXP_RcdA = 1 and
+  v_CpdR = 1 and
+  v_CtrAb = 1 and
+  v_DivJ = 0 and
+  v_DivK = 1 and
+  v_DivL = 1 and
+  v_PleC = 0
+};
+
+$FIN0 := {
+  v_CckA = 1 and
+  v_ChpT = 0 and
+  v_ClpXP_RcdA = 1 and
+  v_CpdR = 1 and
+  v_CtrAb = 1 and
+  v_DivJ = 0 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[5] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 1 and
+  v_CtrAb = 0 and
+  v_DivJ = 1 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 0
+};
+
+$FIN1 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 0 and
+  v_CtrAb = 0 and
+  v_DivJ = 0 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[5] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 1 and
+  v_CpdR = 0 and
+  v_CtrAb = 0 and
+  v_DivJ = 1 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 0
+};
+
+$FIN2 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 0 and
+  v_CtrAb = 0 and
+  v_DivJ = 0 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[5] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_CckA = 0 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 0 and
+  v_CtrAb = 1 and
+  v_DivJ = 1 and
+  v_DivK = 0 and
+  v_DivL = 0 and
+  v_PleC = 1
+};
+
+$FIN3 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 1 and
+  v_CtrAb = 0 and
+  v_DivJ = 0 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[5] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 0 and
+  v_CpdR = 0 and
+  v_CtrAb = 0 and
+  v_DivJ = 0 and
+  v_DivK = 1 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+$FIN4 := {
+  v_CckA = 1 and
+  v_ChpT = 1 and
+  v_ClpXP_RcdA = 1 and
+  v_CpdR = 1 and
+  v_CtrAb = 1 and
+  v_DivJ = 0 and
+  v_DivK = 0 and
+  v_DivL = 1 and
+  v_PleC = 1
+};
+
+$NoKnockDowns := {
+  KO(v_CckA) = 0 and
+  KO(v_ChpT) = 0 and
+  KO(v_ClpXP_RcdA) = 0 and
+  KO(v_CpdR) = 0 and
+  KO(v_CtrAb) = 0 and
+  KO(v_DivJ) = 0 and
+  KO(v_DivK) = 0 and
+  KO(v_DivL) = 0 and
+  KO(v_PleC) = 0
+};
+
+$NoOverExpression := {
+  FE(v_CckA) = 0 and
+  FE(v_ChpT) = 0 and
+  FE(v_ClpXP_RcdA) = 0 and
+  FE(v_CpdR) = 0 and
+  FE(v_CtrAb) = 0 and
+  FE(v_DivJ) = 0 and
+  FE(v_DivK) = 0 and
+  FE(v_DivL) = 0 and
+  FE(v_PleC) = 0
+};
+

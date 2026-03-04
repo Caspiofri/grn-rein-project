@@ -1,0 +1,360 @@
+{
+  "source_file": "models/experiment_3_observation/110_9_0/110_9_0.aeon",
+  "model_name": "110_9_0",
+  "total_genes": 9,
+  "total_update_functions": 9,
+  "total_inputs": 0,
+  "input_nodes": [],
+  "genes": [
+    {
+      "name": "v_CckA",
+      "is_input": false,
+      "update_function": "v_DivL",
+      "regulators": [
+        {
+          "name": "v_DivL",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_DivL=0": 0,
+        "v_DivL=1": 1
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_ChpT",
+      "is_input": false,
+      "update_function": "v_CckA",
+      "regulators": [
+        {
+          "name": "v_CckA",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_CckA=0": 0,
+        "v_CckA=1": 1
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_ClpXP_RcdA",
+      "is_input": false,
+      "update_function": "!v_CpdR",
+      "regulators": [
+        {
+          "name": "v_CpdR",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_CpdR=0": 1,
+        "v_CpdR=1": 0
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_CpdR",
+      "is_input": false,
+      "update_function": "v_ChpT",
+      "regulators": [
+        {
+          "name": "v_ChpT",
+          "edge_signs": [
+            "positive"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_ChpT=0": 0,
+        "v_ChpT=1": 1
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_CtrAb",
+      "is_input": false,
+      "update_function": "v_ChpT & !v_ClpXP_RcdA",
+      "regulators": [
+        {
+          "name": "v_ChpT",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_ClpXP_RcdA",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_ChpT=0, v_ClpXP_RcdA=0": 0,
+        "v_ChpT=0, v_ClpXP_RcdA=1": 0,
+        "v_ChpT=1, v_ClpXP_RcdA=0": 1,
+        "v_ChpT=1, v_ClpXP_RcdA=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_DivJ",
+      "is_input": false,
+      "update_function": "v_DivK & !v_PleC",
+      "regulators": [
+        {
+          "name": "v_DivK",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_PleC",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_DivK=0, v_PleC=0": 0,
+        "v_DivK=0, v_PleC=1": 0,
+        "v_DivK=1, v_PleC=0": 1,
+        "v_DivK=1, v_PleC=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_DivK",
+      "is_input": false,
+      "update_function": "!v_PleC & v_DivJ",
+      "regulators": [
+        {
+          "name": "v_DivJ",
+          "edge_signs": [
+            "positive"
+          ]
+        },
+        {
+          "name": "v_PleC",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_DivJ=0, v_PleC=0": 0,
+        "v_DivJ=0, v_PleC=1": 0,
+        "v_DivJ=1, v_PleC=0": 1,
+        "v_DivJ=1, v_PleC=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_DivL",
+      "is_input": false,
+      "update_function": "!v_DivK",
+      "regulators": [
+        {
+          "name": "v_DivK",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_DivK=0": 1,
+        "v_DivK=1": 0
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_PleC",
+      "is_input": false,
+      "update_function": "!v_DivK",
+      "regulators": [
+        {
+          "name": "v_DivK",
+          "edge_signs": [
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_DivK=0": 1,
+        "v_DivK=1": 0
+      },
+      "truth_table_size": 2
+    }
+  ],
+  "experiment_params": {
+    "N": 1,
+    "K": 10
+  },
+  "experiments": [
+    {
+      "id": 0,
+      "K": 10,
+      "init_state": {
+        "v_CckA": 1,
+        "v_ChpT": 1,
+        "v_ClpXP_RcdA": 1,
+        "v_CpdR": 0,
+        "v_CtrAb": 0,
+        "v_DivJ": 0,
+        "v_DivK": 1,
+        "v_DivL": 1,
+        "v_PleC": 0
+      },
+      "final_state": {
+        "v_CckA": 1,
+        "v_ChpT": 1,
+        "v_ClpXP_RcdA": 0,
+        "v_CpdR": 1,
+        "v_CtrAb": 1,
+        "v_DivJ": 0,
+        "v_DivK": 0,
+        "v_DivL": 1,
+        "v_PleC": 1
+      },
+      "full_trajectory": [
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 1,
+          "v_CpdR": 0,
+          "v_CtrAb": 0,
+          "v_DivJ": 0,
+          "v_DivK": 1,
+          "v_DivL": 1,
+          "v_PleC": 0
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 1,
+          "v_CpdR": 1,
+          "v_CtrAb": 0,
+          "v_DivJ": 1,
+          "v_DivK": 0,
+          "v_DivL": 0,
+          "v_PleC": 0
+        },
+        {
+          "v_CckA": 0,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 1,
+          "v_CtrAb": 0,
+          "v_DivJ": 0,
+          "v_DivK": 1,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 0,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 1,
+          "v_CtrAb": 1,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 0,
+          "v_PleC": 0
+        },
+        {
+          "v_CckA": 0,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 0,
+          "v_CtrAb": 0,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 0,
+          "v_ClpXP_RcdA": 1,
+          "v_CpdR": 1,
+          "v_CtrAb": 1,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 0,
+          "v_CtrAb": 0,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 1,
+          "v_CpdR": 1,
+          "v_CtrAb": 1,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 1,
+          "v_CtrAb": 0,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 1,
+          "v_CtrAb": 1,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        },
+        {
+          "v_CckA": 1,
+          "v_ChpT": 1,
+          "v_ClpXP_RcdA": 0,
+          "v_CpdR": 1,
+          "v_CtrAb": 1,
+          "v_DivJ": 0,
+          "v_DivK": 0,
+          "v_DivL": 1,
+          "v_PleC": 1
+        }
+      ]
+    }
+  ]
+}

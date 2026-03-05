@@ -1,0 +1,759 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AKT[-+] (0..17); v_AMPK[-+] (0..17); v_ATP[-+] (0..17); v_CDK2[-+] (0..17); v_E2F1[-+] (0..17); v_FOXO[-+] (0..17); v_G1_S[-+] (0..17); v_GF[-+] (0..17); v_IRS_PIK3CA[-+] (0..17); v_Insulin[-+] (0..17); v_MAPK[-+] (0..17); v_MDM2[-+] (0..17); v_MYC[-+] (0..17); v_Metabolism[-+] (0..17); v_PP1C[-+] (0..17); v_PP2A[-+] (0..17); v_PRC[-+] (0..17); v_PTEN[-+] (0..17); v_Senescence[-+] (0..17); v_TSC[-+] (0..17); v_mTORC1_S6K1[-+] (0..17); v_p16[-+] (0..17); v_p21[-+] (0..17); v_p53[-+] (0..17); v_pRB[-+] (0..17);
+
+v_p16 v_Senescence positive;
+v_p21 v_Senescence positive;
+v_mTORC1_S6K1 v_Senescence positive;
+v_p21 v_G1_S negative;
+v_CDK2 v_G1_S positive;
+v_E2F1 v_G1_S positive;
+v_Metabolism v_G1_S positive;
+v_GF v_MAPK positive;
+v_PP2A v_MAPK negative;
+v_MAPK v_p16 positive;
+v_p53 v_p16 negative;
+v_E2F1 v_p16 negative;
+v_PRC v_p16 negative;
+v_p16 v_MDM2 positive;
+v_p53 v_MDM2 positive;
+v_AKT v_MDM2 positive;
+v_mTORC1_S6K1 v_MDM2 negative;
+v_MYC v_MDM2 negative;
+v_E2F1 v_MDM2 negative;
+v_MDM2 v_p53 negative;
+v_p53 v_p21 positive;
+v_AKT v_p21 negative;
+v_MYC v_p21 negative;
+v_FOXO v_p21 positive;
+v_IRS_PIK3CA v_AKT positive;
+v_PTEN v_AKT negative;
+v_CDK2 v_AKT positive;
+v_PP2A v_AKT negative;
+v_AMPK v_mTORC1_S6K1 negative;
+v_TSC v_mTORC1_S6K1 negative;
+v_Metabolism v_ATP positive;
+v_Insulin v_IRS_PIK3CA positive;
+v_mTORC1_S6K1 v_IRS_PIK3CA negative;
+v_p53 v_AMPK positive;
+v_ATP v_AMPK negative;
+v_p53 v_PTEN positive;
+v_AKT v_PTEN negative;
+v_MAPK v_TSC negative;
+v_AKT v_TSC negative;
+v_AMPK v_TSC positive;
+v_MAPK v_MYC positive;
+v_p53 v_MYC negative;
+v_mTORC1_S6K1 v_MYC positive;
+v_E2F1 v_MYC positive;
+v_p21 v_CDK2 negative;
+v_mTORC1_S6K1 v_CDK2 positive;
+v_MYC v_CDK2 positive;
+v_E2F1 v_CDK2 positive;
+v_CDK2 v_pRB negative;
+v_GF v_E2F1 positive;
+v_MYC v_E2F1 positive;
+v_pRB v_E2F1 negative;
+v_E2F1 v_E2F1 positive;
+v_AKT v_PRC negative;
+v_MYC v_PRC positive;
+v_MAPK v_Metabolism positive;
+v_AKT v_Metabolism positive;
+v_mTORC1_S6K1 v_Metabolism positive;
+v_PP1C v_Metabolism positive;
+v_mTORC1_S6K1 v_PP2A negative;
+v_MAPK v_FOXO negative;
+v_p16 v_FOXO positive;
+v_AKT v_FOXO negative;
+v_AMPK v_FOXO positive;
+v_Metabolism v_FOXO positive;
+v_MAPK v_PP1C positive;
+v_AKT v_PP1C positive;
+v_GF v_GF positive optional;
+v_Insulin v_Insulin positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AKT = 1 and
+  v_AMPK = 0 and
+  v_ATP = 1 and
+  v_CDK2 = 1 and
+  v_E2F1 = 1 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 1 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 1 and
+  v_p21 = 0 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+$FIN0 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 1 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_pRB = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AKT = 1 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 1 and
+  v_FOXO = 0 and
+  v_G1_S = 1 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 1 and
+  v_Metabolism = 0 and
+  v_PP1C = 1 and
+  v_PP2A = 0 and
+  v_PRC = 1 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 0
+};
+
+$FIN1 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 0 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 1 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 1 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 1 and
+  v_PP2A = 0 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 0 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+$FIN2 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 1 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 1 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 0 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 1 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 1 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_pRB = 0
+};
+
+$FIN3 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 1 and
+  v_MAPK = 0 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AKT = 1 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 1 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 1 and
+  v_MAPK = 0 and
+  v_MDM2 = 0 and
+  v_MYC = 1 and
+  v_Metabolism = 1 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 1 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 1 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+$FIN4 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 1 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 1 and
+  v_PP1C = 1 and
+  v_PP2A = 0 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 1 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 1 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 1 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 1 and
+  v_Metabolism = 1 and
+  v_PP1C = 0 and
+  v_PP2A = 0 and
+  v_PRC = 1 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 1 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_pRB = 1
+};
+
+$FIN5 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 1 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 0 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 0 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 1 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 1 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 1 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 0
+};
+
+$FIN6 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 1 and
+  v_PP1C = 1 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 1 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_pRB = 1
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 1 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 1 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 1 and
+  v_MYC = 1 and
+  v_Metabolism = 0 and
+  v_PP1C = 1 and
+  v_PP2A = 0 and
+  v_PRC = 1 and
+  v_PTEN = 0 and
+  v_Senescence = 1 and
+  v_TSC = 1 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 1 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+$FIN7 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 1 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 1 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 1 and
+  v_PP1C = 1 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 1 and
+  v_E2F1 = 0 and
+  v_FOXO = 1 and
+  v_G1_S = 1 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 1 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 1 and
+  v_MYC = 1 and
+  v_Metabolism = 1 and
+  v_PP1C = 0 and
+  v_PP2A = 0 and
+  v_PRC = 1 and
+  v_PTEN = 1 and
+  v_Senescence = 1 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 1 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_pRB = 1
+};
+
+$FIN8 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 0 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AKT = 0 and
+  v_AMPK = 0 and
+  v_ATP = 0 and
+  v_CDK2 = 1 and
+  v_E2F1 = 1 and
+  v_FOXO = 0 and
+  v_G1_S = 1 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 1 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 1 and
+  v_PP2A = 0 and
+  v_PRC = 0 and
+  v_PTEN = 0 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 1 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 0
+};
+
+$FIN9 := {
+  v_AKT = 0 and
+  v_AMPK = 1 and
+  v_ATP = 0 and
+  v_CDK2 = 0 and
+  v_E2F1 = 0 and
+  v_FOXO = 0 and
+  v_G1_S = 0 and
+  v_GF = 0 and
+  v_IRS_PIK3CA = 0 and
+  v_Insulin = 0 and
+  v_MAPK = 0 and
+  v_MDM2 = 1 and
+  v_MYC = 0 and
+  v_Metabolism = 0 and
+  v_PP1C = 0 and
+  v_PP2A = 1 and
+  v_PRC = 0 and
+  v_PTEN = 1 and
+  v_Senescence = 0 and
+  v_TSC = 0 and
+  v_mTORC1_S6K1 = 0 and
+  v_p16 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_pRB = 1
+};
+
+$NoKnockDowns := {
+  KO(v_AKT) = 0 and
+  KO(v_AMPK) = 0 and
+  KO(v_ATP) = 0 and
+  KO(v_CDK2) = 0 and
+  KO(v_E2F1) = 0 and
+  KO(v_FOXO) = 0 and
+  KO(v_G1_S) = 0 and
+  KO(v_GF) = 0 and
+  KO(v_IRS_PIK3CA) = 0 and
+  KO(v_Insulin) = 0 and
+  KO(v_MAPK) = 0 and
+  KO(v_MDM2) = 0 and
+  KO(v_MYC) = 0 and
+  KO(v_Metabolism) = 0 and
+  KO(v_PP1C) = 0 and
+  KO(v_PP2A) = 0 and
+  KO(v_PRC) = 0 and
+  KO(v_PTEN) = 0 and
+  KO(v_Senescence) = 0 and
+  KO(v_TSC) = 0 and
+  KO(v_mTORC1_S6K1) = 0 and
+  KO(v_p16) = 0 and
+  KO(v_p21) = 0 and
+  KO(v_p53) = 0 and
+  KO(v_pRB) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AKT) = 0 and
+  FE(v_AMPK) = 0 and
+  FE(v_ATP) = 0 and
+  FE(v_CDK2) = 0 and
+  FE(v_E2F1) = 0 and
+  FE(v_FOXO) = 0 and
+  FE(v_G1_S) = 0 and
+  FE(v_GF) = 0 and
+  FE(v_IRS_PIK3CA) = 0 and
+  FE(v_Insulin) = 0 and
+  FE(v_MAPK) = 0 and
+  FE(v_MDM2) = 0 and
+  FE(v_MYC) = 0 and
+  FE(v_Metabolism) = 0 and
+  FE(v_PP1C) = 0 and
+  FE(v_PP2A) = 0 and
+  FE(v_PRC) = 0 and
+  FE(v_PTEN) = 0 and
+  FE(v_Senescence) = 0 and
+  FE(v_TSC) = 0 and
+  FE(v_mTORC1_S6K1) = 0 and
+  FE(v_p16) = 0 and
+  FE(v_p21) = 0 and
+  FE(v_p53) = 0 and
+  FE(v_pRB) = 0
+};
+

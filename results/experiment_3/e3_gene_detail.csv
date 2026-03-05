@@ -1,0 +1,271 @@
+model_id,K,N,gene,balance,rein_L,match,degenerate,gt_tt,rein_tt
+031_9_0,5,1,v_ACE2,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+031_9_0,5,1,v_CLN3,balanced,2,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,5,1,v_HCM1,pure_activator,0,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,5,1,v_MBF,pure_activator,9,False,True,"[0, 1]","[1, 1]"
+031_9_0,5,1,v_SBF,balanced,15,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1]"
+031_9_0,5,1,v_SFF,pure_activator,4,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,5,1,v_SWI5,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+031_9_0,5,1,v_YHP1,pure_activator,10,False,True,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,5,1,v_YOX1,pure_activator,15,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,5,3,v_ACE2,pure_activator,8,True,False,"[0, 1]","[0, 1]"
+031_9_0,5,3,v_CLN3,balanced,2,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,5,3,v_HCM1,pure_activator,2,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,5,3,v_MBF,pure_activator,10,False,True,"[0, 1]","[1, 1]"
+031_9_0,5,3,v_SBF,balanced,3,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,5,3,v_SFF,pure_activator,8,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,5,3,v_SWI5,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+031_9_0,5,3,v_YHP1,pure_activator,15,False,False,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,5,3,v_YOX1,pure_activator,1,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,5,5,v_ACE2,pure_activator,16,False,True,"[0, 1]","[1, 1]"
+031_9_0,5,5,v_CLN3,balanced,3,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,5,5,v_HCM1,pure_activator,0,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,5,5,v_MBF,pure_activator,4,True,False,"[0, 1]","[0, 1]"
+031_9_0,5,5,v_SBF,balanced,2,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,5,5,v_SFF,pure_activator,0,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,5,5,v_SWI5,pure_activator,12,False,False,"[0, 1]","[1, 1]"
+031_9_0,5,5,v_YHP1,pure_activator,14,False,False,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,5,5,v_YOX1,pure_activator,1,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,5,10,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,10,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,5,10,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,5,10,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,10,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,5,10,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,5,10,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,10,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,5,10,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,5,20,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,20,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,5,20,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,5,20,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,20,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,5,20,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,5,20,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,5,20,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,5,20,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,10,1,v_ACE2,pure_activator,7,True,False,"[0, 1]","[0, 1]"
+031_9_0,10,1,v_CLN3,balanced,3,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,1,v_HCM1,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,10,1,v_MBF,pure_activator,12,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,1,v_SBF,balanced,2,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,1,v_SFF,pure_activator,6,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,1,v_SWI5,pure_activator,12,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,1,v_YHP1,pure_activator,0,False,False,"[0, 1, 1, 1]","[0, 0, 0, 1]"
+031_9_0,10,1,v_YOX1,pure_activator,7,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,3,v_ACE2,pure_activator,15,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,3,v_CLN3,balanced,3,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,3,v_HCM1,pure_activator,4,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,10,3,v_MBF,pure_activator,14,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,3,v_SBF,balanced,3,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,3,v_SFF,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,10,3,v_SWI5,pure_activator,9,False,True,"[0, 1]","[1, 1]"
+031_9_0,10,3,v_YHP1,pure_activator,13,False,True,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,10,3,v_YOX1,pure_activator,3,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,5,v_ACE2,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+031_9_0,10,5,v_CLN3,balanced,10,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,5,v_HCM1,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,10,5,v_MBF,pure_activator,16,False,True,"[0, 1]","[1, 1]"
+031_9_0,10,5,v_SBF,balanced,10,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,5,v_SFF,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,10,5,v_SWI5,pure_activator,3,True,False,"[0, 1]","[0, 1]"
+031_9_0,10,5,v_YHP1,pure_activator,15,False,False,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,10,5,v_YOX1,pure_activator,2,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,10,10,v_ACE2,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+031_9_0,10,10,v_CLN3,balanced,6,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0]"
+031_9_0,10,10,v_HCM1,pure_activator,4,True,False,"[0, 0, 0, 1]","[0, 0, 0, 1]"
+031_9_0,10,10,v_MBF,pure_activator,14,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,10,v_SBF,balanced,2,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,10,v_SFF,pure_activator,6,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,10,v_SWI5,pure_activator,3,True,False,"[0, 1]","[0, 1]"
+031_9_0,10,10,v_YHP1,pure_activator,7,True,False,"[0, 1, 1, 1]","[0, 1, 1, 1]"
+031_9_0,10,10,v_YOX1,pure_activator,3,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,20,v_ACE2,pure_activator,4,True,False,"[0, 1]","[0, 1]"
+031_9_0,10,20,v_CLN3,balanced,2,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,20,v_HCM1,pure_activator,6,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,10,20,v_MBF,pure_activator,14,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,20,v_SBF,balanced,3,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,10,20,v_SFF,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,10,20,v_SWI5,pure_activator,15,False,False,"[0, 1]","[1, 1]"
+031_9_0,10,20,v_YHP1,pure_activator,13,False,True,"[0, 1, 1, 1]","[1, 1, 1, 1]"
+031_9_0,10,20,v_YOX1,pure_activator,8,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,15,1,v_ACE2,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+031_9_0,15,1,v_CLN3,balanced,3,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,15,1,v_HCM1,pure_activator,11,False,True,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,15,1,v_MBF,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+031_9_0,15,1,v_SBF,balanced,3,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0]"
+031_9_0,15,1,v_SFF,pure_activator,12,False,False,"[0, 0, 0, 1]","[1, 1, 1, 1]"
+031_9_0,15,1,v_SWI5,pure_activator,15,False,False,"[0, 1]","[1, 1]"
+031_9_0,15,1,v_YHP1,pure_activator,4,False,False,"[0, 1, 1, 1]","[0, 0, 0, 1]"
+031_9_0,15,1,v_YOX1,pure_activator,3,False,False,"[0, 0, 0, 1]","[0, 1, 1, 1]"
+031_9_0,15,3,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,3,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,3,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,3,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,3,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,3,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,3,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,3,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,15,3,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,5,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,5,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,5,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,5,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,5,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,5,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,5,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,5,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,15,5,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,10,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,10,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,10,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,10,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,10,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,10,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,10,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,10,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,15,10,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,20,v_ACE2,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,20,v_CLN3,balanced,,False,False,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,20,v_HCM1,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,20,v_MBF,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,20,v_SBF,balanced,,False,False,"[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]",
+031_9_0,15,20,v_SFF,pure_activator,,False,False,"[0, 0, 0, 1]",
+031_9_0,15,20,v_SWI5,pure_activator,,False,False,"[0, 1]",
+031_9_0,15,20,v_YHP1,pure_activator,,False,False,"[0, 1, 1, 1]",
+031_9_0,15,20,v_YOX1,pure_activator,,False,False,"[0, 0, 0, 1]",
+110_9_0,5,1,v_CckA,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,1,v_ChpT,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,1,v_ClpXP_RcdA,pure_repressor,0,False,False,"[1, 0]","[0, 0]"
+110_9_0,5,1,v_CpdR,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,1,v_CtrAb,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,5,1,v_DivJ,balanced,0,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,5,1,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,5,1,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,1,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,3,v_CckA,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,3,v_ChpT,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,3,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,3,v_CpdR,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,3,v_CtrAb,balanced,5,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,3,v_DivJ,balanced,12,False,False,"[0, 0, 1, 0]","[1, 0, 1, 0]"
+110_9_0,5,3,v_DivK,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,3,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,3,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,5,v_CckA,pure_activator,11,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,5,v_ChpT,pure_activator,14,False,False,"[0, 1]","[1, 1]"
+110_9_0,5,5,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,5,v_CpdR,pure_activator,15,False,False,"[0, 1]","[1, 1]"
+110_9_0,5,5,v_CtrAb,balanced,5,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,5,v_DivJ,balanced,4,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,5,v_DivK,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,5,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,5,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,10,v_CckA,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,10,v_ChpT,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,10,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,10,v_CpdR,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,10,v_CtrAb,balanced,3,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,5,10,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,10,v_DivK,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,5,10,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,10,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,20,v_CckA,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,20,v_ChpT,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,5,20,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,20,v_CpdR,pure_activator,13,False,True,"[0, 1]","[1, 1]"
+110_9_0,5,20,v_CtrAb,balanced,6,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,5,20,v_DivJ,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,5,20,v_DivK,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,5,20,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,5,20,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,1,v_CckA,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,1,v_ChpT,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,1,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,1,v_CpdR,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,1,v_CtrAb,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,10,1,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,1,v_DivK,balanced,5,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,1,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,1,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,3,v_CckA,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,3,v_ChpT,pure_activator,9,False,True,"[0, 1]","[1, 1]"
+110_9_0,10,3,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,3,v_CpdR,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,3,v_CtrAb,balanced,8,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,3,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,3,v_DivK,balanced,12,False,False,"[0, 0, 1, 0]","[1, 0, 1, 0]"
+110_9_0,10,3,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,3,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,5,v_CckA,pure_activator,7,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,5,v_ChpT,pure_activator,7,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,5,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,5,v_CpdR,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,5,v_CtrAb,balanced,3,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,10,5,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,5,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,10,5,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,5,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,10,v_CckA,pure_activator,11,False,True,"[0, 1]","[1, 1]"
+110_9_0,10,10,v_ChpT,pure_activator,7,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,10,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,10,v_CpdR,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,10,v_CtrAb,balanced,3,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,10,10,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,10,v_DivK,balanced,4,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,10,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,10,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,20,v_CckA,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,20,v_ChpT,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,20,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,20,v_CpdR,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,10,20,v_CtrAb,balanced,8,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,10,20,v_DivJ,balanced,3,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,10,20,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,10,20,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,10,20,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,1,v_CckA,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,1,v_ChpT,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,1,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,1,v_CpdR,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,1,v_CtrAb,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,1,v_DivJ,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,1,v_DivK,balanced,11,False,False,"[0, 0, 1, 0]","[1, 0, 1, 0]"
+110_9_0,15,1,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,1,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,3,v_CckA,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,3,v_ChpT,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,3,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,3,v_CpdR,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,3,v_CtrAb,balanced,8,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,15,3,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,15,3,v_DivK,balanced,5,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,15,3,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,3,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,5,v_CckA,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,5,v_ChpT,pure_activator,2,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,5,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,5,v_CpdR,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,5,v_CtrAb,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,5,v_DivJ,balanced,7,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,15,5,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,15,5,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,5,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,10,v_CckA,pure_activator,7,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,10,v_ChpT,pure_activator,5,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,10,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,10,v_CpdR,pure_activator,1,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,10,v_CtrAb,balanced,3,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,10,v_DivJ,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,10,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,15,10,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,10,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,20,v_CckA,pure_activator,0,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,20,v_ChpT,pure_activator,3,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,20,v_ClpXP_RcdA,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,20,v_CpdR,pure_activator,3,True,False,"[0, 1]","[0, 1]"
+110_9_0,15,20,v_CtrAb,balanced,5,False,False,"[0, 0, 1, 0]","[0, 0, 1, 1]"
+110_9_0,15,20,v_DivJ,balanced,2,True,False,"[0, 0, 1, 0]","[0, 0, 1, 0]"
+110_9_0,15,20,v_DivK,balanced,15,False,False,"[0, 0, 1, 0]","[1, 0, 1, 1]"
+110_9_0,15,20,v_DivL,pure_repressor,17,True,True,"[1, 0]","[1, 0]"
+110_9_0,15,20,v_PleC,pure_repressor,17,True,True,"[1, 0]","[1, 0]"

@@ -1,0 +1,527 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_APC_C[-+] (0..17); v_CDKB1_1[-+] (0..17); v_CYCA2_3[-+] (0..17); v_CYCB1_1[-+] (0..17); v_CYCD3_1[-+] (0..17); v_E2Fa[-+] (0..17); v_E2Fb[-+] (0..17); v_E2Fc[-+] (0..17); v_E2Fe[-+] (0..17); v_KRP1[-+] (0..17); v_MYB3R1_4[-+] (0..17); v_MYB77[-+] (0..17); v_RBR[-+] (0..17); v_SCF[-+] (0..17);
+
+v_KRP1 v_MYB3R1_4 negative;
+v_MYB77 v_MYB3R1_4 positive;
+v_MYB3R1_4 v_MYB3R1_4 positive;
+v_CYCB1_1 v_MYB3R1_4 positive;
+v_RBR v_E2Fb negative;
+v_E2Fa v_E2Fb positive;
+v_KRP1 v_CYCB1_1 negative;
+v_MYB77 v_CYCB1_1 positive;
+v_E2Fc v_CYCB1_1 negative;
+v_CYCD3_1 v_CYCB1_1 positive;
+v_E2Fb v_CYCB1_1 positive;
+v_MYB3R1_4 v_CYCB1_1 positive;
+v_APC_C v_CYCB1_1 negative;
+v_RBR v_CYCB1_1 negative;
+v_MYB77 v_APC_C positive;
+v_MYB3R1_4 v_APC_C positive;
+v_RBR v_APC_C negative;
+v_E2Fe v_APC_C negative;
+v_E2Fa v_APC_C positive;
+v_KRP1 v_CDKB1_1 negative;
+v_MYB77 v_CDKB1_1 positive;
+v_E2Fc v_CDKB1_1 negative;
+v_CYCD3_1 v_CDKB1_1 positive;
+v_E2Fb v_CDKB1_1 positive;
+v_MYB3R1_4 v_CDKB1_1 positive;
+v_RBR v_CDKB1_1 negative;
+v_SCF v_CYCD3_1 negative;
+v_KRP1 v_E2Fe positive optional;
+v_KRP1 v_E2Fe negative optional;
+v_MYB77 v_E2Fe positive optional;
+v_MYB77 v_E2Fe negative optional;
+v_E2Fc v_E2Fe positive optional;
+v_E2Fc v_E2Fe negative optional;
+v_CYCD3_1 v_E2Fe positive optional;
+v_CYCD3_1 v_E2Fe negative optional;
+v_E2Fb v_E2Fe positive optional;
+v_E2Fb v_E2Fe negative optional;
+v_RBR v_E2Fe positive optional;
+v_RBR v_E2Fe negative optional;
+v_KRP1 v_MYB77 negative;
+v_CYCD3_1 v_MYB77 positive;
+v_E2Fb v_MYB77 positive;
+v_RBR v_MYB77 negative;
+v_KRP1 v_RBR positive;
+v_CYCD3_1 v_RBR negative;
+v_MYB3R1_4 v_RBR positive;
+v_RBR v_RBR negative;
+v_E2Fa v_RBR positive;
+v_MYB77 v_KRP1 positive;
+v_MYB3R1_4 v_KRP1 positive;
+v_CDKB1_1 v_KRP1 negative;
+v_CYCA2_3 v_KRP1 positive optional;
+v_CYCA2_3 v_KRP1 negative optional;
+v_SCF v_KRP1 positive optional;
+v_SCF v_KRP1 negative optional;
+v_MYB77 v_CYCA2_3 positive;
+v_MYB3R1_4 v_CYCA2_3 positive;
+v_APC_C v_CYCA2_3 negative;
+v_KRP1 v_SCF negative;
+v_CYCD3_1 v_SCF positive;
+v_E2Fb v_SCF positive;
+v_MYB3R1_4 v_SCF positive;
+v_APC_C v_SCF negative;
+v_RBR v_SCF negative;
+v_KRP1 v_E2Fc positive optional;
+v_KRP1 v_E2Fc negative optional;
+v_CYCD3_1 v_E2Fc positive optional;
+v_CYCD3_1 v_E2Fc negative optional;
+v_MYB3R1_4 v_E2Fc positive;
+v_RBR v_E2Fc negative;
+v_SCF v_E2Fc negative;
+v_E2Fa v_E2Fc positive;
+v_E2Fc v_E2Fa negative;
+v_CDKB1_1 v_E2Fa positive optional;
+v_CDKB1_1 v_E2Fa negative optional;
+v_CYCA2_3 v_E2Fa positive optional;
+v_CYCA2_3 v_E2Fa negative optional;
+v_E2Fa v_E2Fa positive optional;
+v_E2Fa v_E2Fa negative optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 1 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 0
+};
+
+$FIN0 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 1 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 0 and
+  v_E2Fe = 1 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 1 and
+  v_RBR = 0 and
+  v_SCF = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 1 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 1 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$FIN1 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 1 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 1 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 0
+};
+
+$FIN2 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 1 and
+  v_E2Fe = 1 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 1 and
+  v_RBR = 0 and
+  v_SCF = 1
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 1 and
+  v_E2Fe = 1 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 1
+};
+
+$FIN3 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 1 and
+  v_E2Fe = 1 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 1 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 1 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$FIN4 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 1 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 0 and
+  v_E2Fe = 1 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$FIN5 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 1 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 1 and
+  v_E2Fe = 0 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 1
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 1 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 0 and
+  v_E2Fc = 1 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$FIN6 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 1 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 1 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 1 and
+  v_E2Fc = 0 and
+  v_E2Fe = 1 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 1
+};
+
+$FIN7 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 1 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 1 and
+  v_E2Fe = 0 and
+  v_KRP1 = 1 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 0
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 0 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 1 and
+  v_MYB77 = 1 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$FIN8 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 1 and
+  v_E2Fb = 1 and
+  v_E2Fc = 1 and
+  v_E2Fe = 1 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_APC_C = 1 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 1 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 1 and
+  v_SCF = 1
+};
+
+$FIN9 := {
+  v_APC_C = 0 and
+  v_CDKB1_1 = 0 and
+  v_CYCA2_3 = 0 and
+  v_CYCB1_1 = 0 and
+  v_CYCD3_1 = 1 and
+  v_E2Fa = 0 and
+  v_E2Fb = 0 and
+  v_E2Fc = 0 and
+  v_E2Fe = 0 and
+  v_KRP1 = 0 and
+  v_MYB3R1_4 = 0 and
+  v_MYB77 = 0 and
+  v_RBR = 0 and
+  v_SCF = 0
+};
+
+$NoKnockDowns := {
+  KO(v_APC_C) = 0 and
+  KO(v_CDKB1_1) = 0 and
+  KO(v_CYCA2_3) = 0 and
+  KO(v_CYCB1_1) = 0 and
+  KO(v_CYCD3_1) = 0 and
+  KO(v_E2Fa) = 0 and
+  KO(v_E2Fb) = 0 and
+  KO(v_E2Fc) = 0 and
+  KO(v_E2Fe) = 0 and
+  KO(v_KRP1) = 0 and
+  KO(v_MYB3R1_4) = 0 and
+  KO(v_MYB77) = 0 and
+  KO(v_RBR) = 0 and
+  KO(v_SCF) = 0
+};
+
+$NoOverExpression := {
+  FE(v_APC_C) = 0 and
+  FE(v_CDKB1_1) = 0 and
+  FE(v_CYCA2_3) = 0 and
+  FE(v_CYCB1_1) = 0 and
+  FE(v_CYCD3_1) = 0 and
+  FE(v_E2Fa) = 0 and
+  FE(v_E2Fb) = 0 and
+  FE(v_E2Fc) = 0 and
+  FE(v_E2Fe) = 0 and
+  FE(v_KRP1) = 0 and
+  FE(v_MYB3R1_4) = 0 and
+  FE(v_MYB77) = 0 and
+  FE(v_RBR) = 0 and
+  FE(v_SCF) = 0
+};
+

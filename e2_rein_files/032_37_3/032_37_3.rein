@@ -1,0 +1,1076 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AP1[-+] (0..17); v_CD45[-+] (0..17); v_CD8[-+] (0..17); v_CRE[-+] (0..17); v_CREB[-+] (0..17); v_Ca[-+] (0..17); v_Calcin[-+] (0..17); v_DAG[-+] (0..17); v_ERK[-+] (0..17); v_Fos[-+] (0..17); v_Fyn[-+] (0..17); v_Gads[-+] (0..17); v_Grb2Sos[-+] (0..17); v_IKKbeta[-+] (0..17); v_IP3[-+] (0..17); v_IkB[-+] (0..17); v_Itk[-+] (0..17); v_JNK[-+] (0..17); v_Jun[-+] (0..17); v_LAT[-+] (0..17); v_Lck[-+] (0..17); v_MEK[-+] (0..17); v_NFAT[-+] (0..17); v_Nfkb[-+] (0..17); v_PAGCsk[-+] (0..17); v_PKCth[-+] (0..17); v_PLCg_act[-+] (0..17); v_PLCg_bind[-+] (0..17); v_Raf[-+] (0..17); v_Ras[-+] (0..17); v_RasGRP1[-+] (0..17); v_Rlk[-+] (0..17); v_Rsk[-+] (0..17); v_SEK[-+] (0..17); v_SLP76[-+] (0..17); v_TCRbind[-+] (0..17); v_TCRlig[-+] (0..17); v_TCRphos[-+] (0..17); v_ZAP70[-+] (0..17); v_cCbl[-+] (0..17);
+
+v_MEK v_ERK positive;
+v_PKCth v_SEK positive;
+v_IP3 v_Ca positive;
+v_ERK v_Rsk positive;
+v_SLP76 v_Itk positive;
+v_ZAP70 v_Itk positive;
+v_LAT v_Grb2Sos positive;
+v_ZAP70 v_LAT positive;
+v_ZAP70 v_cCbl positive;
+v_Grb2Sos v_Ras positive;
+v_RasGRP1 v_Ras positive;
+v_PKCth v_RasGRP1 positive;
+v_DAG v_RasGRP1 positive;
+v_TCRlig v_TCRbind positive;
+v_cCbl v_TCRbind negative;
+v_Raf v_MEK positive;
+v_DAG v_PKCth positive;
+v_Lck v_Rlk positive;
+v_ERK v_Fos positive;
+v_Fos v_AP1 positive;
+v_Jun v_AP1 positive;
+v_Ca v_Calcin positive;
+v_LAT v_PLCg_bind positive;
+v_Rlk v_PLCg_act positive;
+v_SLP76 v_PLCg_act positive;
+v_ZAP70 v_PLCg_act positive;
+v_Itk v_PLCg_act positive;
+v_PLCg_bind v_PLCg_act positive;
+v_JNK v_Jun positive;
+v_IKKbeta v_IkB negative;
+v_IkB v_Nfkb negative;
+v_Calcin v_NFAT positive;
+v_Gads v_SLP76 positive;
+v_CD45 v_Lck positive;
+v_CD8 v_Lck positive;
+v_PAGCsk v_Lck negative;
+v_SEK v_JNK positive;
+v_PLCg_act v_DAG positive;
+v_Ras v_Raf positive;
+v_TCRbind v_PAGCsk negative optional;
+v_Fyn v_PAGCsk positive;
+v_PKCth v_IKKbeta positive;
+v_PLCg_act v_IP3 positive;
+v_Lck v_ZAP70 positive;
+v_cCbl v_ZAP70 negative;
+v_TCRphos v_ZAP70 positive;
+v_Lck v_Fyn positive;
+v_CD45 v_Fyn positive;
+v_TCRbind v_Fyn positive;
+v_Fyn v_TCRphos positive;
+v_Rsk v_CREB positive;
+v_CREB v_CRE positive;
+v_LAT v_Gads positive;
+v_CD45 v_CD45 positive optional;
+v_CD8 v_CD8 positive optional;
+v_TCRlig v_TCRlig positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AP1 = 1 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 1 and
+  v_CREB = 1 and
+  v_Ca = 1 and
+  v_Calcin = 0 and
+  v_DAG = 1 and
+  v_ERK = 1 and
+  v_Fos = 1 and
+  v_Fyn = 0 and
+  v_Gads = 1 and
+  v_Grb2Sos = 1 and
+  v_IKKbeta = 1 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 1 and
+  v_Lck = 0 and
+  v_MEK = 1 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 1 and
+  v_PKCth = 1 and
+  v_PLCg_act = 1 and
+  v_PLCg_bind = 1 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 0 and
+  v_Rsk = 1 and
+  v_SEK = 1 and
+  v_SLP76 = 1 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 1
+};
+
+$FIN0 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AP1 = 1 and
+  v_CD45 = 0 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 1 and
+  v_Ca = 0 and
+  v_Calcin = 1 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 0 and
+  v_Grb2Sos = 1 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 1 and
+  v_JNK = 0 and
+  v_Jun = 1 and
+  v_LAT = 1 and
+  v_Lck = 1 and
+  v_MEK = 1 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 1 and
+  v_PLCg_act = 1 and
+  v_PLCg_bind = 0 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 0 and
+  v_Rsk = 1 and
+  v_SEK = 0 and
+  v_SLP76 = 1 and
+  v_TCRbind = 0 and
+  v_TCRlig = 1 and
+  v_TCRphos = 1 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+$FIN1 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 1 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 1 and
+  v_ERK = 1 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 1 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 1 and
+  v_IP3 = 0 and
+  v_IkB = 0 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 1 and
+  v_LAT = 1 and
+  v_Lck = 0 and
+  v_MEK = 1 and
+  v_NFAT = 0 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 1 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 1 and
+  v_Rsk = 0 and
+  v_SEK = 1 and
+  v_SLP76 = 1 and
+  v_TCRbind = 1 and
+  v_TCRlig = 0 and
+  v_TCRphos = 1 and
+  v_ZAP70 = 1 and
+  v_cCbl = 1
+};
+
+$FIN2 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 1 and
+  v_CREB = 1 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 1 and
+  v_Grb2Sos = 1 and
+  v_IKKbeta = 1 and
+  v_IP3 = 1 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 1 and
+  v_Jun = 0 and
+  v_LAT = 1 and
+  v_Lck = 1 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 1 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 0 and
+  v_Rsk = 1 and
+  v_SEK = 0 and
+  v_SLP76 = 1 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 1
+};
+
+$FIN3 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AP1 = 1 and
+  v_CD45 = 0 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 1 and
+  v_Ca = 1 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 1 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 1 and
+  v_IP3 = 1 and
+  v_IkB = 0 and
+  v_Itk = 0 and
+  v_JNK = 1 and
+  v_Jun = 1 and
+  v_LAT = 0 and
+  v_Lck = 1 and
+  v_MEK = 1 and
+  v_NFAT = 1 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 1 and
+  v_PKCth = 0 and
+  v_PLCg_act = 1 and
+  v_PLCg_bind = 1 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 1 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+$FIN4 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AP1 = 1 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 1 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 1 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 1 and
+  v_IkB = 0 and
+  v_Itk = 1 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 1 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 1 and
+  v_cCbl = 0
+};
+
+$FIN5 := {
+  v_AP1 = 0 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 1 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 1 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 1 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 1 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AP1 = 1 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 1 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 0 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 1 and
+  v_MEK = 0 and
+  v_NFAT = 1 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 1 and
+  v_PKCth = 1 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 1 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 1 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 1 and
+  v_cCbl = 1
+};
+
+$FIN6 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AP1 = 0 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 1 and
+  v_CREB = 1 and
+  v_Ca = 0 and
+  v_Calcin = 1 and
+  v_DAG = 1 and
+  v_ERK = 0 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 1 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 1 and
+  v_IP3 = 1 and
+  v_IkB = 0 and
+  v_Itk = 1 and
+  v_JNK = 0 and
+  v_Jun = 1 and
+  v_LAT = 0 and
+  v_Lck = 1 and
+  v_MEK = 1 and
+  v_NFAT = 0 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 1 and
+  v_Raf = 1 and
+  v_Ras = 1 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 1 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 1 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+$FIN7 := {
+  v_AP1 = 0 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 1 and
+  v_Fyn = 1 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 1 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 1 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 1 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 1 and
+  v_ZAP70 = 0 and
+  v_cCbl = 1
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AP1 = 1 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 1 and
+  v_CREB = 1 and
+  v_Ca = 1 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 1 and
+  v_Grb2Sos = 1 and
+  v_IKKbeta = 1 and
+  v_IP3 = 1 and
+  v_IkB = 1 and
+  v_Itk = 1 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 1 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 1 and
+  v_PKCth = 1 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+$FIN8 := {
+  v_AP1 = 0 and
+  v_CD45 = 1 and
+  v_CD8 = 1 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 1 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 1 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 1 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 1 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 0 and
+  v_TCRlig = 0 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AP1 = 1 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 1 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 1 and
+  v_DAG = 0 and
+  v_ERK = 1 and
+  v_Fos = 1 and
+  v_Fyn = 0 and
+  v_Gads = 1 and
+  v_Grb2Sos = 1 and
+  v_IKKbeta = 1 and
+  v_IP3 = 0 and
+  v_IkB = 0 and
+  v_Itk = 1 and
+  v_JNK = 1 and
+  v_Jun = 0 and
+  v_LAT = 1 and
+  v_Lck = 1 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 1 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 1 and
+  v_Rlk = 1 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 1 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 1 and
+  v_ZAP70 = 1 and
+  v_cCbl = 0
+};
+
+$FIN9 := {
+  v_AP1 = 0 and
+  v_CD45 = 0 and
+  v_CD8 = 0 and
+  v_CRE = 0 and
+  v_CREB = 0 and
+  v_Ca = 0 and
+  v_Calcin = 0 and
+  v_DAG = 0 and
+  v_ERK = 0 and
+  v_Fos = 0 and
+  v_Fyn = 0 and
+  v_Gads = 0 and
+  v_Grb2Sos = 0 and
+  v_IKKbeta = 0 and
+  v_IP3 = 0 and
+  v_IkB = 1 and
+  v_Itk = 0 and
+  v_JNK = 0 and
+  v_Jun = 0 and
+  v_LAT = 0 and
+  v_Lck = 0 and
+  v_MEK = 0 and
+  v_NFAT = 0 and
+  v_Nfkb = 0 and
+  v_PAGCsk = 0 and
+  v_PKCth = 0 and
+  v_PLCg_act = 0 and
+  v_PLCg_bind = 0 and
+  v_Raf = 0 and
+  v_Ras = 0 and
+  v_RasGRP1 = 0 and
+  v_Rlk = 0 and
+  v_Rsk = 0 and
+  v_SEK = 0 and
+  v_SLP76 = 0 and
+  v_TCRbind = 1 and
+  v_TCRlig = 1 and
+  v_TCRphos = 0 and
+  v_ZAP70 = 0 and
+  v_cCbl = 0
+};
+
+$NoKnockDowns := {
+  KO(v_AP1) = 0 and
+  KO(v_CD45) = 0 and
+  KO(v_CD8) = 0 and
+  KO(v_CRE) = 0 and
+  KO(v_CREB) = 0 and
+  KO(v_Ca) = 0 and
+  KO(v_Calcin) = 0 and
+  KO(v_DAG) = 0 and
+  KO(v_ERK) = 0 and
+  KO(v_Fos) = 0 and
+  KO(v_Fyn) = 0 and
+  KO(v_Gads) = 0 and
+  KO(v_Grb2Sos) = 0 and
+  KO(v_IKKbeta) = 0 and
+  KO(v_IP3) = 0 and
+  KO(v_IkB) = 0 and
+  KO(v_Itk) = 0 and
+  KO(v_JNK) = 0 and
+  KO(v_Jun) = 0 and
+  KO(v_LAT) = 0 and
+  KO(v_Lck) = 0 and
+  KO(v_MEK) = 0 and
+  KO(v_NFAT) = 0 and
+  KO(v_Nfkb) = 0 and
+  KO(v_PAGCsk) = 0 and
+  KO(v_PKCth) = 0 and
+  KO(v_PLCg_act) = 0 and
+  KO(v_PLCg_bind) = 0 and
+  KO(v_Raf) = 0 and
+  KO(v_Ras) = 0 and
+  KO(v_RasGRP1) = 0 and
+  KO(v_Rlk) = 0 and
+  KO(v_Rsk) = 0 and
+  KO(v_SEK) = 0 and
+  KO(v_SLP76) = 0 and
+  KO(v_TCRbind) = 0 and
+  KO(v_TCRlig) = 0 and
+  KO(v_TCRphos) = 0 and
+  KO(v_ZAP70) = 0 and
+  KO(v_cCbl) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AP1) = 0 and
+  FE(v_CD45) = 0 and
+  FE(v_CD8) = 0 and
+  FE(v_CRE) = 0 and
+  FE(v_CREB) = 0 and
+  FE(v_Ca) = 0 and
+  FE(v_Calcin) = 0 and
+  FE(v_DAG) = 0 and
+  FE(v_ERK) = 0 and
+  FE(v_Fos) = 0 and
+  FE(v_Fyn) = 0 and
+  FE(v_Gads) = 0 and
+  FE(v_Grb2Sos) = 0 and
+  FE(v_IKKbeta) = 0 and
+  FE(v_IP3) = 0 and
+  FE(v_IkB) = 0 and
+  FE(v_Itk) = 0 and
+  FE(v_JNK) = 0 and
+  FE(v_Jun) = 0 and
+  FE(v_LAT) = 0 and
+  FE(v_Lck) = 0 and
+  FE(v_MEK) = 0 and
+  FE(v_NFAT) = 0 and
+  FE(v_Nfkb) = 0 and
+  FE(v_PAGCsk) = 0 and
+  FE(v_PKCth) = 0 and
+  FE(v_PLCg_act) = 0 and
+  FE(v_PLCg_bind) = 0 and
+  FE(v_Raf) = 0 and
+  FE(v_Ras) = 0 and
+  FE(v_RasGRP1) = 0 and
+  FE(v_Rlk) = 0 and
+  FE(v_Rsk) = 0 and
+  FE(v_SEK) = 0 and
+  FE(v_SLP76) = 0 and
+  FE(v_TCRbind) = 0 and
+  FE(v_TCRlig) = 0 and
+  FE(v_TCRphos) = 0 and
+  FE(v_ZAP70) = 0 and
+  FE(v_cCbl) = 0
+};
+

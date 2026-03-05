@@ -1,0 +1,931 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_Acetoacetyl_CoA[-+] (0..17); v_Acetyl_CoA[-+] (0..17); v_Acetyl_CoA_acetyltransferase[-+] (0..17); v_Acetyl_CoA_acetyltransferase_RNA[-+] (0..17); v_Acetyl_CoA_acetyltransferase_gene[-+] (0..17); v_Cholesterol[-+] (0..17); v_Cyp51[-+] (0..17); v_Cyp51_RNA[-+] (0..17); v_Cyp51_gene[-+] (0..17); v_Desmosterol[-+] (0..17); v_Dimethyl_allyl_pyrophosphate[-+] (0..17); v_FPP_Synthase[-+] (0..17); v_FPP_Synthase_RNA[-+] (0..17); v_FPP_Synthase_gene[-+] (0..17); v_Farnesyl_pyrophosphate[-+] (0..17); v_Geranyl_pyrophosphate[-+] (0..17); v_HMG_CoA[-+] (0..17); v_HMG_CoA_Reductase[-+] (0..17); v_HMG_CoA_Reductase_RNA[-+] (0..17); v_HMG_CoA_Reductase_gene[-+] (0..17); v_HMG_CoA_Synthase[-+] (0..17); v_HMG_CoA_Synthase_RNA[-+] (0..17); v_HMG_CoA_Synthase_gene[-+] (0..17); v_Insig_SREBP_SCAP[-+] (0..17); v_Isopentenyl_pyrophosphate[-+] (0..17); v_Lanosterol[-+] (0..17); v_Mevalonic_Acid[-+] (0..17); v_Mevalonyl_pyrophosphate[-+] (0..17); v_SREBP_SCAP[-+] (0..17); v_Septdehydrocholesterol[-+] (0..17); v_Squaline[-+] (0..17); v_Statins[-+] (0..17); v_mSREBP[-+] (0..17); v_pSREBP[-+] (0..17);
+
+v_Lanosterol v_Septdehydrocholesterol positive;
+v_Lanosterol v_Desmosterol positive;
+v_FPP_Synthase_gene v_FPP_Synthase_RNA positive;
+v_Isopentenyl_pyrophosphate v_Dimethyl_allyl_pyrophosphate positive;
+v_Geranyl_pyrophosphate v_Farnesyl_pyrophosphate positive;
+v_FPP_Synthase v_Farnesyl_pyrophosphate negative;
+v_HMG_CoA_Synthase_RNA v_HMG_CoA_Synthase positive;
+v_mSREBP v_HMG_CoA_Reductase_gene positive;
+v_Acetyl_CoA_acetyltransferase_gene v_Acetyl_CoA_acetyltransferase_RNA positive;
+v_FPP_Synthase_RNA v_FPP_Synthase positive;
+v_SREBP_SCAP v_pSREBP positive;
+v_Mevalonyl_pyrophosphate v_Isopentenyl_pyrophosphate positive;
+v_Septdehydrocholesterol v_Cholesterol positive;
+v_Desmosterol v_Cholesterol positive;
+v_Acetyl_CoA_acetyltransferase v_Acetoacetyl_CoA positive;
+v_Acetyl_CoA v_Acetoacetyl_CoA positive;
+v_HMG_CoA_Reductase_gene v_HMG_CoA_Reductase_RNA positive;
+v_Cholesterol v_Insig_SREBP_SCAP negative;
+v_Acetyl_CoA_acetyltransferase_RNA v_Acetyl_CoA_acetyltransferase positive;
+v_mSREBP v_Cyp51_gene positive;
+v_pSREBP v_mSREBP positive;
+v_HMG_CoA v_Mevalonic_Acid positive;
+v_HMG_CoA_Reductase v_Mevalonic_Acid positive;
+v_HMG_CoA_Synthase v_HMG_CoA positive;
+v_Acetoacetyl_CoA v_HMG_CoA positive;
+v_Acetyl_CoA v_HMG_CoA positive;
+v_mSREBP v_HMG_CoA_Synthase_gene positive;
+v_Farnesyl_pyrophosphate v_Squaline positive;
+v_Cyp51_gene v_Cyp51_RNA positive;
+v_Mevalonic_Acid v_Mevalonyl_pyrophosphate positive;
+v_Statins v_SREBP_SCAP negative;
+v_Insig_SREBP_SCAP v_SREBP_SCAP positive;
+v_mSREBP v_Acetyl_CoA_acetyltransferase_gene positive;
+v_Squaline v_Lanosterol positive;
+v_Cyp51_RNA v_Cyp51 positive;
+v_Statins v_HMG_CoA_Reductase negative;
+v_HMG_CoA_Reductase_RNA v_HMG_CoA_Reductase positive;
+v_HMG_CoA_Synthase_gene v_HMG_CoA_Synthase_RNA positive;
+v_Isopentenyl_pyrophosphate v_Geranyl_pyrophosphate positive;
+v_Dimethyl_allyl_pyrophosphate v_Geranyl_pyrophosphate positive;
+v_mSREBP v_FPP_Synthase_gene positive;
+v_Acetyl_CoA v_Acetyl_CoA positive optional;
+v_Statins v_Statins positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 1 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 1 and
+  v_Dimethyl_allyl_pyrophosphate = 1 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 1 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 1 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 1 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$FIN0 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 1 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 1 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 1 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 1 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 1 and
+  v_HMG_CoA = 1 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 1 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 1 and
+  v_Squaline = 1 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$FIN1 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 1 and
+  v_Geranyl_pyrophosphate = 1 and
+  v_HMG_CoA = 1 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$FIN2 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 1 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 1 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 1 and
+  v_Dimethyl_allyl_pyrophosphate = 1 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 1 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 1 and
+  v_Statins = 0 and
+  v_mSREBP = 0 and
+  v_pSREBP = 1
+};
+
+$FIN3 := {
+  v_Acetoacetyl_CoA = 1 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 1 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 1 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 1 and
+  v_Squaline = 1 and
+  v_Statins = 0 and
+  v_mSREBP = 0 and
+  v_pSREBP = 1
+};
+
+$FIN4 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 1 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 1 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 1 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 1 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$FIN5 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_Acetoacetyl_CoA = 1 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 1 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 1 and
+  v_Squaline = 1 and
+  v_Statins = 1 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+$FIN6 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 1 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 1 and
+  v_HMG_CoA_Reductase = 1 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 1 and
+  v_Mevalonic_Acid = 1 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 1 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 0
+};
+
+$FIN7 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 1 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 1 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 1 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 1 and
+  v_FPP_Synthase = 1 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 1 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 1 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 1 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 0 and
+  v_pSREBP = 1
+};
+
+$FIN8 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 0 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 1 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 1 and
+  v_Cyp51_gene = 1 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 1 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 1 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 1 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 0 and
+  v_mSREBP = 1 and
+  v_pSREBP = 1
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 1 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 1 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 1 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 1 and
+  v_FPP_Synthase_gene = 1 and
+  v_Farnesyl_pyrophosphate = 1 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 1 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 1 and
+  v_HMG_CoA_Synthase_RNA = 1 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 0 and
+  v_Isopentenyl_pyrophosphate = 1 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 1 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$FIN9 := {
+  v_Acetoacetyl_CoA = 0 and
+  v_Acetyl_CoA = 1 and
+  v_Acetyl_CoA_acetyltransferase = 0 and
+  v_Acetyl_CoA_acetyltransferase_RNA = 0 and
+  v_Acetyl_CoA_acetyltransferase_gene = 0 and
+  v_Cholesterol = 0 and
+  v_Cyp51 = 0 and
+  v_Cyp51_RNA = 0 and
+  v_Cyp51_gene = 0 and
+  v_Desmosterol = 0 and
+  v_Dimethyl_allyl_pyrophosphate = 0 and
+  v_FPP_Synthase = 0 and
+  v_FPP_Synthase_RNA = 0 and
+  v_FPP_Synthase_gene = 0 and
+  v_Farnesyl_pyrophosphate = 0 and
+  v_Geranyl_pyrophosphate = 0 and
+  v_HMG_CoA = 0 and
+  v_HMG_CoA_Reductase = 0 and
+  v_HMG_CoA_Reductase_RNA = 0 and
+  v_HMG_CoA_Reductase_gene = 0 and
+  v_HMG_CoA_Synthase = 0 and
+  v_HMG_CoA_Synthase_RNA = 0 and
+  v_HMG_CoA_Synthase_gene = 0 and
+  v_Insig_SREBP_SCAP = 1 and
+  v_Isopentenyl_pyrophosphate = 0 and
+  v_Lanosterol = 0 and
+  v_Mevalonic_Acid = 0 and
+  v_Mevalonyl_pyrophosphate = 0 and
+  v_SREBP_SCAP = 0 and
+  v_Septdehydrocholesterol = 0 and
+  v_Squaline = 0 and
+  v_Statins = 1 and
+  v_mSREBP = 0 and
+  v_pSREBP = 0
+};
+
+$NoKnockDowns := {
+  KO(v_Acetoacetyl_CoA) = 0 and
+  KO(v_Acetyl_CoA) = 0 and
+  KO(v_Acetyl_CoA_acetyltransferase) = 0 and
+  KO(v_Acetyl_CoA_acetyltransferase_RNA) = 0 and
+  KO(v_Acetyl_CoA_acetyltransferase_gene) = 0 and
+  KO(v_Cholesterol) = 0 and
+  KO(v_Cyp51) = 0 and
+  KO(v_Cyp51_RNA) = 0 and
+  KO(v_Cyp51_gene) = 0 and
+  KO(v_Desmosterol) = 0 and
+  KO(v_Dimethyl_allyl_pyrophosphate) = 0 and
+  KO(v_FPP_Synthase) = 0 and
+  KO(v_FPP_Synthase_RNA) = 0 and
+  KO(v_FPP_Synthase_gene) = 0 and
+  KO(v_Farnesyl_pyrophosphate) = 0 and
+  KO(v_Geranyl_pyrophosphate) = 0 and
+  KO(v_HMG_CoA) = 0 and
+  KO(v_HMG_CoA_Reductase) = 0 and
+  KO(v_HMG_CoA_Reductase_RNA) = 0 and
+  KO(v_HMG_CoA_Reductase_gene) = 0 and
+  KO(v_HMG_CoA_Synthase) = 0 and
+  KO(v_HMG_CoA_Synthase_RNA) = 0 and
+  KO(v_HMG_CoA_Synthase_gene) = 0 and
+  KO(v_Insig_SREBP_SCAP) = 0 and
+  KO(v_Isopentenyl_pyrophosphate) = 0 and
+  KO(v_Lanosterol) = 0 and
+  KO(v_Mevalonic_Acid) = 0 and
+  KO(v_Mevalonyl_pyrophosphate) = 0 and
+  KO(v_SREBP_SCAP) = 0 and
+  KO(v_Septdehydrocholesterol) = 0 and
+  KO(v_Squaline) = 0 and
+  KO(v_Statins) = 0 and
+  KO(v_mSREBP) = 0 and
+  KO(v_pSREBP) = 0
+};
+
+$NoOverExpression := {
+  FE(v_Acetoacetyl_CoA) = 0 and
+  FE(v_Acetyl_CoA) = 0 and
+  FE(v_Acetyl_CoA_acetyltransferase) = 0 and
+  FE(v_Acetyl_CoA_acetyltransferase_RNA) = 0 and
+  FE(v_Acetyl_CoA_acetyltransferase_gene) = 0 and
+  FE(v_Cholesterol) = 0 and
+  FE(v_Cyp51) = 0 and
+  FE(v_Cyp51_RNA) = 0 and
+  FE(v_Cyp51_gene) = 0 and
+  FE(v_Desmosterol) = 0 and
+  FE(v_Dimethyl_allyl_pyrophosphate) = 0 and
+  FE(v_FPP_Synthase) = 0 and
+  FE(v_FPP_Synthase_RNA) = 0 and
+  FE(v_FPP_Synthase_gene) = 0 and
+  FE(v_Farnesyl_pyrophosphate) = 0 and
+  FE(v_Geranyl_pyrophosphate) = 0 and
+  FE(v_HMG_CoA) = 0 and
+  FE(v_HMG_CoA_Reductase) = 0 and
+  FE(v_HMG_CoA_Reductase_RNA) = 0 and
+  FE(v_HMG_CoA_Reductase_gene) = 0 and
+  FE(v_HMG_CoA_Synthase) = 0 and
+  FE(v_HMG_CoA_Synthase_RNA) = 0 and
+  FE(v_HMG_CoA_Synthase_gene) = 0 and
+  FE(v_Insig_SREBP_SCAP) = 0 and
+  FE(v_Isopentenyl_pyrophosphate) = 0 and
+  FE(v_Lanosterol) = 0 and
+  FE(v_Mevalonic_Acid) = 0 and
+  FE(v_Mevalonyl_pyrophosphate) = 0 and
+  FE(v_SREBP_SCAP) = 0 and
+  FE(v_Septdehydrocholesterol) = 0 and
+  FE(v_Squaline) = 0 and
+  FE(v_Statins) = 0 and
+  FE(v_mSREBP) = 0 and
+  FE(v_pSREBP) = 0
+};
+

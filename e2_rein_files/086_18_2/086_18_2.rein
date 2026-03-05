@@ -1,0 +1,670 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AKT1[-+] (0..17); v_AKT2[-+] (0..17); v_Apoptosis[-+] (0..17); v_CCA[-+] (0..17); v_DNAdamage[-+] (0..17); v_ECMicroenv[-+] (0..17); v_EMT[-+] (0..17); v_EMTreg[-+] (0..17); v_ERK_pthw[-+] (0..17); v_Ecadh[-+] (0..17); v_GF[-+] (0..17); v_Invasion[-+] (0..17); v_Metastasis[-+] (0..17); v_Migration[-+] (0..17); v_Notch_pthw[-+] (0..17); v_TGFb_pthw[-+] (0..17); v_WNT_pthw[-+] (0..17); v_miRNA[-+] (0..17); v_p53[-+] (0..17); v_p63_73[-+] (0..17);
+
+v_GF v_GF positive;
+v_EMTreg v_GF positive;
+v_Ecadh v_GF negative;
+v_Migration v_Metastasis positive;
+v_Invasion v_Migration positive;
+v_EMT v_Migration positive;
+v_p63_73 v_Migration negative;
+v_AKT1 v_Migration negative;
+v_AKT2 v_Migration positive;
+v_ERK_pthw v_Migration positive;
+v_miRNA v_Migration negative;
+v_TGFb_pthw v_Invasion positive;
+v_WNT_pthw v_Invasion positive;
+v_EMTreg v_Invasion positive;
+v_EMTreg v_EMT positive;
+v_Ecadh v_EMT negative;
+v_p53 v_Apoptosis positive;
+v_EMTreg v_Apoptosis negative;
+v_p63_73 v_Apoptosis positive;
+v_AKT1 v_Apoptosis negative;
+v_ERK_pthw v_Apoptosis negative;
+v_miRNA v_Apoptosis positive;
+v_TGFb_pthw v_CCA positive;
+v_Notch_pthw v_CCA positive;
+v_p53 v_CCA positive;
+v_EMTreg v_CCA positive;
+v_p63_73 v_CCA positive;
+v_AKT1 v_CCA negative;
+v_AKT2 v_CCA positive;
+v_ERK_pthw v_CCA negative;
+v_miRNA v_CCA positive;
+v_ECMicroenv v_TGFb_pthw positive;
+v_Notch_pthw v_TGFb_pthw positive;
+v_WNT_pthw v_TGFb_pthw negative;
+v_miRNA v_TGFb_pthw negative;
+v_ECMicroenv v_Notch_pthw positive;
+v_p53 v_Notch_pthw negative;
+v_p63_73 v_Notch_pthw negative;
+v_miRNA v_Notch_pthw negative;
+v_Notch_pthw v_WNT_pthw negative;
+v_WNT_pthw v_WNT_pthw negative;
+v_p53 v_WNT_pthw negative;
+v_EMTreg v_WNT_pthw negative;
+v_p63_73 v_WNT_pthw negative;
+v_AKT1 v_WNT_pthw negative;
+v_miRNA v_WNT_pthw negative;
+v_Ecadh v_WNT_pthw negative;
+v_DNAdamage v_p53 positive;
+v_Notch_pthw v_p53 positive;
+v_WNT_pthw v_p53 positive;
+v_EMTreg v_p53 negative;
+v_p63_73 v_p53 negative;
+v_AKT1 v_p53 negative;
+v_AKT2 v_p53 negative;
+v_Notch_pthw v_EMTreg positive;
+v_WNT_pthw v_EMTreg positive;
+v_p53 v_EMTreg negative;
+v_EMTreg v_EMTreg positive;
+v_miRNA v_EMTreg negative;
+v_DNAdamage v_p63_73 positive;
+v_Notch_pthw v_p63_73 negative;
+v_p53 v_p63_73 negative;
+v_EMTreg v_p63_73 negative;
+v_AKT1 v_p63_73 negative;
+v_AKT2 v_p63_73 negative;
+v_GF v_AKT1 positive;
+v_TGFb_pthw v_AKT1 positive;
+v_Notch_pthw v_AKT1 positive;
+v_WNT_pthw v_AKT1 positive;
+v_p53 v_AKT1 negative;
+v_EMTreg v_AKT1 positive;
+v_miRNA v_AKT1 negative;
+v_Ecadh v_AKT1 negative;
+v_p53 v_AKT2 negative;
+v_EMTreg v_AKT2 positive;
+v_miRNA v_AKT2 negative;
+v_GF v_ERK_pthw positive;
+v_TGFb_pthw v_ERK_pthw positive;
+v_Notch_pthw v_ERK_pthw positive;
+v_EMTreg v_ERK_pthw positive;
+v_AKT1 v_ERK_pthw negative;
+v_p53 v_miRNA positive;
+v_EMTreg v_miRNA negative;
+v_p63_73 v_miRNA positive;
+v_AKT1 v_miRNA negative;
+v_AKT2 v_miRNA negative;
+v_EMTreg v_Ecadh negative;
+v_AKT2 v_Ecadh negative;
+v_DNAdamage v_DNAdamage positive optional;
+v_ECMicroenv v_ECMicroenv positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 1 and
+  v_EMT = 1 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 1
+};
+
+$FIN0 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 1 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 1 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 1 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 1 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+$FIN1 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 1 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 1 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 0 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 1 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 1
+};
+
+$FIN2 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 1 and
+  v_EMT = 1 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 0 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 1
+};
+
+$FIN3 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 1 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 0 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 1 and
+  v_EMT = 1 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 0 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 1 and
+  v_miRNA = 1 and
+  v_p53 = 1 and
+  v_p63_73 = 1
+};
+
+$FIN4 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 1 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 0 and
+  v_EMT = 1 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 1 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 1
+};
+
+$FIN5 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 1 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+$FIN6 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+$FIN7 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 0 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 1 and
+  v_miRNA = 1 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+$FIN8 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CCA = 1 and
+  v_DNAdamage = 1 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 0 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 1 and
+  v_Ecadh = 0 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 0 and
+  v_Notch_pthw = 1 and
+  v_TGFb_pthw = 1 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 1 and
+  v_p53 = 0 and
+  v_p63_73 = 0
+};
+
+$FIN9 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CCA = 0 and
+  v_DNAdamage = 0 and
+  v_ECMicroenv = 0 and
+  v_EMT = 0 and
+  v_EMTreg = 1 and
+  v_ERK_pthw = 0 and
+  v_Ecadh = 1 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_Notch_pthw = 0 and
+  v_TGFb_pthw = 0 and
+  v_WNT_pthw = 0 and
+  v_miRNA = 0 and
+  v_p53 = 1 and
+  v_p63_73 = 0
+};
+
+$NoKnockDowns := {
+  KO(v_AKT1) = 0 and
+  KO(v_AKT2) = 0 and
+  KO(v_Apoptosis) = 0 and
+  KO(v_CCA) = 0 and
+  KO(v_DNAdamage) = 0 and
+  KO(v_ECMicroenv) = 0 and
+  KO(v_EMT) = 0 and
+  KO(v_EMTreg) = 0 and
+  KO(v_ERK_pthw) = 0 and
+  KO(v_Ecadh) = 0 and
+  KO(v_GF) = 0 and
+  KO(v_Invasion) = 0 and
+  KO(v_Metastasis) = 0 and
+  KO(v_Migration) = 0 and
+  KO(v_Notch_pthw) = 0 and
+  KO(v_TGFb_pthw) = 0 and
+  KO(v_WNT_pthw) = 0 and
+  KO(v_miRNA) = 0 and
+  KO(v_p53) = 0 and
+  KO(v_p63_73) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AKT1) = 0 and
+  FE(v_AKT2) = 0 and
+  FE(v_Apoptosis) = 0 and
+  FE(v_CCA) = 0 and
+  FE(v_DNAdamage) = 0 and
+  FE(v_ECMicroenv) = 0 and
+  FE(v_EMT) = 0 and
+  FE(v_EMTreg) = 0 and
+  FE(v_ERK_pthw) = 0 and
+  FE(v_Ecadh) = 0 and
+  FE(v_GF) = 0 and
+  FE(v_Invasion) = 0 and
+  FE(v_Metastasis) = 0 and
+  FE(v_Migration) = 0 and
+  FE(v_Notch_pthw) = 0 and
+  FE(v_TGFb_pthw) = 0 and
+  FE(v_WNT_pthw) = 0 and
+  FE(v_miRNA) = 0 and
+  FE(v_p53) = 0 and
+  FE(v_p63_73) = 0
+};
+

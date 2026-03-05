@@ -1,0 +1,10 @@
+model_id,variant,K,N,solution_index,gene,L_value
+110_9_0,K15_N3,15,3,0,v_CckA,1
+110_9_0,K15_N3,15,3,0,v_ChpT,1
+110_9_0,K15_N3,15,3,0,v_ClpXP_RcdA,17
+110_9_0,K15_N3,15,3,0,v_CpdR,0
+110_9_0,K15_N3,15,3,0,v_CtrAb,8
+110_9_0,K15_N3,15,3,0,v_DivJ,7
+110_9_0,K15_N3,15,3,0,v_DivK,5
+110_9_0,K15_N3,15,3,0,v_DivL,17
+110_9_0,K15_N3,15,3,0,v_PleC,17

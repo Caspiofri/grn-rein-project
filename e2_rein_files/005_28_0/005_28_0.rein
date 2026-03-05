@@ -1,0 +1,884 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_ADD[-+] (0..17); v_ATM[-+] (0..17); v_ATR[-+] (0..17); v_BRCA1[-+] (0..17); v_CHK1[-+] (0..17); v_CHK2[-+] (0..17); v_CHKREC[-+] (0..17); v_DNAPK[-+] (0..17); v_DSB[-+] (0..17); v_FAN1[-+] (0..17); v_FANCD1N[-+] (0..17); v_FANCD2I[-+] (0..17); v_FANCJBRCA1[-+] (0..17); v_FANCM[-+] (0..17); v_FAcore[-+] (0..17); v_H2AX[-+] (0..17); v_HRR[-+] (0..17); v_ICL[-+] (0..17); v_KU[-+] (0..17); v_MRN[-+] (0..17); v_MUS81[-+] (0..17); v_NHEJ[-+] (0..17); v_PCNATLS[-+] (0..17); v_RAD51[-+] (0..17); v_USP1[-+] (0..17); v_XPF[-+] (0..17); v_p53[-+] (0..17); v_ssDNARPA[-+] (0..17);
+
+v_BRCA1 v_FANCD1N positive;
+v_CHKREC v_FANCD1N negative;
+v_ssDNARPA v_FANCD1N positive;
+v_FANCD2I v_FANCD1N positive;
+v_ATM v_BRCA1 positive;
+v_CHK2 v_BRCA1 positive;
+v_DSB v_BRCA1 positive;
+v_ATR v_BRCA1 positive;
+v_CHKREC v_BRCA1 negative;
+v_DSB v_ATM positive;
+v_ATR v_ATM positive;
+v_CHKREC v_ATM negative;
+v_ATM v_FANCD2I positive;
+v_FAcore v_FANCD2I positive;
+v_DSB v_FANCD2I positive;
+v_ATR v_FANCD2I positive;
+v_H2AX v_FANCD2I positive;
+v_USP1 v_FANCD2I negative;
+v_FAcore v_PCNATLS positive optional;
+v_FAN1 v_PCNATLS negative;
+v_ADD v_PCNATLS positive;
+v_USP1 v_PCNATLS negative;
+v_BRCA1 v_HRR positive;
+v_FANCD1N v_HRR positive;
+v_DSB v_HRR positive;
+v_RAD51 v_HRR positive;
+v_CHKREC v_HRR negative;
+v_DSB v_DNAPK positive;
+v_KU v_DNAPK positive;
+v_CHKREC v_DNAPK negative;
+v_ATM v_MRN positive;
+v_DSB v_MRN positive;
+v_KU v_MRN negative;
+v_RAD51 v_MRN negative;
+v_CHKREC v_MRN negative;
+v_FANCD2I v_MRN positive optional;
+v_FANCD2I v_MRN negative optional;
+v_ATM v_NHEJ negative;
+v_DNAPK v_NHEJ positive;
+v_DSB v_NHEJ positive;
+v_ATR v_NHEJ positive optional;
+v_ATR v_NHEJ negative optional;
+v_KU v_NHEJ positive;
+v_CHKREC v_NHEJ negative;
+v_FANCJBRCA1 v_NHEJ negative;
+v_ssDNARPA v_NHEJ positive optional;
+v_ssDNARPA v_NHEJ negative optional;
+v_XPF v_NHEJ positive;
+v_MRN v_KU negative;
+v_DSB v_KU positive;
+v_CHKREC v_KU negative;
+v_FANCD2I v_KU negative;
+v_ICL v_FANCM positive;
+v_CHKREC v_FANCM negative;
+v_ATM v_CHK2 positive;
+v_DNAPK v_CHK2 positive;
+v_ATR v_CHK2 positive;
+v_CHKREC v_CHK2 negative;
+v_ATM v_H2AX positive;
+v_DNAPK v_H2AX positive;
+v_DSB v_H2AX positive;
+v_ATR v_H2AX positive;
+v_CHKREC v_H2AX negative;
+v_NHEJ v_DSB negative;
+v_HRR v_DSB negative;
+v_DSB v_DSB positive;
+v_FAN1 v_DSB positive;
+v_XPF v_DSB positive;
+v_NHEJ v_CHKREC positive;
+v_ICL v_CHKREC negative;
+v_PCNATLS v_CHKREC positive;
+v_HRR v_CHKREC positive;
+v_DSB v_CHKREC negative;
+v_CHKREC v_CHKREC negative;
+v_ADD v_CHKREC negative;
+v_MRN v_ssDNARPA positive;
+v_DSB v_ssDNARPA positive;
+v_KU v_ssDNARPA negative;
+v_RAD51 v_ssDNARPA negative;
+v_FANCJBRCA1 v_ssDNARPA positive;
+v_FANCD2I v_ssDNARPA positive;
+v_ATM v_FAcore positive;
+v_FANCM v_FAcore positive;
+v_ATR v_FAcore positive;
+v_CHKREC v_FAcore negative;
+v_FANCM v_USP1 negative;
+v_FANCD1N v_USP1 positive;
+v_PCNATLS v_USP1 positive;
+v_FANCD2I v_USP1 positive;
+v_ATM v_FANCJBRCA1 positive;
+v_ICL v_FANCJBRCA1 positive;
+v_ATR v_FANCJBRCA1 positive;
+v_ssDNARPA v_FANCJBRCA1 positive;
+v_FANCM v_XPF negative;
+v_p53 v_XPF positive;
+v_MUS81 v_XPF positive;
+v_FAcore v_XPF negative;
+v_FAN1 v_XPF positive optional;
+v_FAN1 v_XPF negative optional;
+v_FANCD2I v_XPF positive optional;
+v_FANCD2I v_XPF negative optional;
+v_ICL v_MUS81 positive;
+v_ATM v_CHK1 positive;
+v_DNAPK v_CHK1 positive;
+v_ATR v_CHK1 positive;
+v_CHKREC v_CHK1 negative;
+v_ATM v_p53 positive;
+v_CHK2 v_p53 positive;
+v_DNAPK v_p53 positive;
+v_ATR v_p53 positive;
+v_CHKREC v_p53 negative;
+v_CHK1 v_p53 positive;
+v_PCNATLS v_ADD negative;
+v_MUS81 v_ADD positive;
+v_FAN1 v_ADD positive;
+v_ADD v_ADD positive;
+v_XPF v_ADD positive;
+v_ICL v_ICL positive;
+v_DSB v_ICL negative;
+v_FANCD1N v_RAD51 positive;
+v_CHKREC v_RAD51 negative;
+v_ssDNARPA v_RAD51 positive;
+v_ATM v_ATR positive;
+v_FANCM v_ATR positive;
+v_CHKREC v_ATR negative;
+v_ssDNARPA v_ATR positive;
+v_MUS81 v_FAN1 positive;
+v_FANCD2I v_FAN1 positive;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_ADD = 0 and
+  v_ATM = 1 and
+  v_ATR = 1 and
+  v_BRCA1 = 1 and
+  v_CHK1 = 1 and
+  v_CHK2 = 1 and
+  v_CHKREC = 0 and
+  v_DNAPK = 1 and
+  v_DSB = 1 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 1 and
+  v_FAcore = 1 and
+  v_H2AX = 0 and
+  v_HRR = 1 and
+  v_ICL = 1 and
+  v_KU = 1 and
+  v_MRN = 1 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 1 and
+  v_USP1 = 1 and
+  v_XPF = 0 and
+  v_p53 = 1 and
+  v_ssDNARPA = 0
+};
+
+$FIN0 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_ADD = 1 and
+  v_ATM = 1 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 1 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 1 and
+  v_FANCM = 0 and
+  v_FAcore = 1 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 1 and
+  v_MRN = 0 and
+  v_MUS81 = 1 and
+  v_NHEJ = 1 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 1 and
+  v_USP1 = 1 and
+  v_XPF = 1 and
+  v_p53 = 0 and
+  v_ssDNARPA = 1
+};
+
+$FIN1 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 1 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_ADD = 1 and
+  v_ATM = 1 and
+  v_ATR = 0 and
+  v_BRCA1 = 1 and
+  v_CHK1 = 1 and
+  v_CHK2 = 1 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 1 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 1 and
+  v_FANCM = 1 and
+  v_FAcore = 1 and
+  v_H2AX = 1 and
+  v_HRR = 1 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 1 and
+  v_MUS81 = 1 and
+  v_NHEJ = 1 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 1 and
+  v_USP1 = 0 and
+  v_XPF = 1 and
+  v_p53 = 1 and
+  v_ssDNARPA = 1
+};
+
+$FIN2 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_ADD = 1 and
+  v_ATM = 1 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 1 and
+  v_CHK2 = 1 and
+  v_CHKREC = 1 and
+  v_DNAPK = 0 and
+  v_DSB = 1 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 1 and
+  v_FANCM = 1 and
+  v_FAcore = 0 and
+  v_H2AX = 1 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 1 and
+  v_ssDNARPA = 1
+};
+
+$FIN3 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_ADD = 1 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 1 and
+  v_CHK1 = 1 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 1 and
+  v_FANCM = 1 and
+  v_FAcore = 1 and
+  v_H2AX = 1 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 1 and
+  v_MUS81 = 1 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 1 and
+  v_XPF = 1 and
+  v_p53 = 0 and
+  v_ssDNARPA = 1
+};
+
+$FIN4 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_ADD = 0 and
+  v_ATM = 1 and
+  v_ATR = 1 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 1 and
+  v_CHKREC = 0 and
+  v_DNAPK = 1 and
+  v_DSB = 0 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 1 and
+  v_HRR = 1 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 1 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 1 and
+  v_USP1 = 0 and
+  v_XPF = 1 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+$FIN5 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 1 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_ADD = 0 and
+  v_ATM = 1 and
+  v_ATR = 0 and
+  v_BRCA1 = 1 and
+  v_CHK1 = 1 and
+  v_CHK2 = 1 and
+  v_CHKREC = 0 and
+  v_DNAPK = 1 and
+  v_DSB = 0 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 1 and
+  v_FAcore = 1 and
+  v_H2AX = 0 and
+  v_HRR = 1 and
+  v_ICL = 0 and
+  v_KU = 1 and
+  v_MRN = 0 and
+  v_MUS81 = 1 and
+  v_NHEJ = 1 and
+  v_PCNATLS = 1 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 1 and
+  v_p53 = 1 and
+  v_ssDNARPA = 0
+};
+
+$FIN6 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 1 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_ADD = 1 and
+  v_ATM = 1 and
+  v_ATR = 1 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 1 and
+  v_CHK2 = 1 and
+  v_CHKREC = 1 and
+  v_DNAPK = 1 and
+  v_DSB = 1 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 1 and
+  v_FANCM = 1 and
+  v_FAcore = 0 and
+  v_H2AX = 1 and
+  v_HRR = 0 and
+  v_ICL = 1 and
+  v_KU = 1 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 1 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 1 and
+  v_USP1 = 0 and
+  v_XPF = 1 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+$FIN7 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 1 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 1 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 1 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 1 and
+  v_H2AX = 0 and
+  v_HRR = 1 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 1 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 1 and
+  v_USP1 = 1 and
+  v_XPF = 0 and
+  v_p53 = 1 and
+  v_ssDNARPA = 1
+};
+
+$FIN8 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_ADD = 0 and
+  v_ATM = 1 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 1 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 1 and
+  v_FANCD1N = 1 and
+  v_FANCD2I = 1 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 1 and
+  v_FAcore = 1 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 1 and
+  v_KU = 1 and
+  v_MRN = 1 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 1 and
+  v_USP1 = 1 and
+  v_XPF = 1 and
+  v_p53 = 1 and
+  v_ssDNARPA = 1
+};
+
+$FIN9 := {
+  v_ADD = 0 and
+  v_ATM = 0 and
+  v_ATR = 0 and
+  v_BRCA1 = 0 and
+  v_CHK1 = 0 and
+  v_CHK2 = 0 and
+  v_CHKREC = 0 and
+  v_DNAPK = 0 and
+  v_DSB = 0 and
+  v_FAN1 = 0 and
+  v_FANCD1N = 0 and
+  v_FANCD2I = 0 and
+  v_FANCJBRCA1 = 0 and
+  v_FANCM = 0 and
+  v_FAcore = 0 and
+  v_H2AX = 0 and
+  v_HRR = 0 and
+  v_ICL = 0 and
+  v_KU = 0 and
+  v_MRN = 0 and
+  v_MUS81 = 0 and
+  v_NHEJ = 0 and
+  v_PCNATLS = 0 and
+  v_RAD51 = 0 and
+  v_USP1 = 0 and
+  v_XPF = 0 and
+  v_p53 = 0 and
+  v_ssDNARPA = 0
+};
+
+$NoKnockDowns := {
+  KO(v_ADD) = 0 and
+  KO(v_ATM) = 0 and
+  KO(v_ATR) = 0 and
+  KO(v_BRCA1) = 0 and
+  KO(v_CHK1) = 0 and
+  KO(v_CHK2) = 0 and
+  KO(v_CHKREC) = 0 and
+  KO(v_DNAPK) = 0 and
+  KO(v_DSB) = 0 and
+  KO(v_FAN1) = 0 and
+  KO(v_FANCD1N) = 0 and
+  KO(v_FANCD2I) = 0 and
+  KO(v_FANCJBRCA1) = 0 and
+  KO(v_FANCM) = 0 and
+  KO(v_FAcore) = 0 and
+  KO(v_H2AX) = 0 and
+  KO(v_HRR) = 0 and
+  KO(v_ICL) = 0 and
+  KO(v_KU) = 0 and
+  KO(v_MRN) = 0 and
+  KO(v_MUS81) = 0 and
+  KO(v_NHEJ) = 0 and
+  KO(v_PCNATLS) = 0 and
+  KO(v_RAD51) = 0 and
+  KO(v_USP1) = 0 and
+  KO(v_XPF) = 0 and
+  KO(v_p53) = 0 and
+  KO(v_ssDNARPA) = 0
+};
+
+$NoOverExpression := {
+  FE(v_ADD) = 0 and
+  FE(v_ATM) = 0 and
+  FE(v_ATR) = 0 and
+  FE(v_BRCA1) = 0 and
+  FE(v_CHK1) = 0 and
+  FE(v_CHK2) = 0 and
+  FE(v_CHKREC) = 0 and
+  FE(v_DNAPK) = 0 and
+  FE(v_DSB) = 0 and
+  FE(v_FAN1) = 0 and
+  FE(v_FANCD1N) = 0 and
+  FE(v_FANCD2I) = 0 and
+  FE(v_FANCJBRCA1) = 0 and
+  FE(v_FANCM) = 0 and
+  FE(v_FAcore) = 0 and
+  FE(v_H2AX) = 0 and
+  FE(v_HRR) = 0 and
+  FE(v_ICL) = 0 and
+  FE(v_KU) = 0 and
+  FE(v_MRN) = 0 and
+  FE(v_MUS81) = 0 and
+  FE(v_NHEJ) = 0 and
+  FE(v_PCNATLS) = 0 and
+  FE(v_RAD51) = 0 and
+  FE(v_USP1) = 0 and
+  FE(v_XPF) = 0 and
+  FE(v_p53) = 0 and
+  FE(v_ssDNARPA) = 0
+};
+

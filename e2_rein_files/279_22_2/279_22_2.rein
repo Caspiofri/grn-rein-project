@@ -1,0 +1,774 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AJ[-+] (0..17); v_B_catenin_TCF4[-+] (0..17); v_B_catenin_nuc[-+] (0..17); v_Damage[-+] (0..17); v_E_cadherin[-+] (0..17); v_GLI[-+] (0..17); v_HHIP[-+] (0..17); v_LEF1[-+] (0..17); v_Migration[-+] (0..17); v_NFKB[-+] (0..17); v_PAK1[-+] (0..17); v_Patched[-+] (0..17); v_Rac1[-+] (0..17); v_SHH[-+] (0..17); v_SMO[-+] (0..17); v_SNAI1[-+] (0..17); v_SNAI2[-+] (0..17); v_SUFU[-+] (0..17); v_TGFb_secr[-+] (0..17); v_TWIST1[-+] (0..17); v_ZEB1[-+] (0..17); v_miR_200[-+] (0..17); v_miR_34[-+] (0..17); v_neighbor[-+] (0..17);
+
+v_E_cadherin v_AJ positive optional;
+v_E_cadherin v_AJ negative optional;
+v_neighbor v_AJ positive optional;
+v_neighbor v_AJ negative optional;
+v_B_catenin_nuc v_B_catenin_TCF4 positive optional;
+v_B_catenin_nuc v_B_catenin_TCF4 negative optional;
+v_SNAI1 v_B_catenin_TCF4 positive optional;
+v_SNAI1 v_B_catenin_TCF4 negative optional;
+v_SNAI2 v_B_catenin_TCF4 positive optional;
+v_SNAI2 v_B_catenin_TCF4 negative optional;
+v_AJ v_B_catenin_nuc positive optional;
+v_AJ v_B_catenin_nuc negative optional;
+v_miR_200 v_B_catenin_nuc positive optional;
+v_miR_200 v_B_catenin_nuc negative optional;
+v_miR_34 v_B_catenin_nuc positive optional;
+v_miR_34 v_B_catenin_nuc negative optional;
+v_SNAI1 v_E_cadherin positive optional;
+v_SNAI1 v_E_cadherin negative optional;
+v_SNAI2 v_E_cadherin positive optional;
+v_SNAI2 v_E_cadherin negative optional;
+v_TWIST1 v_E_cadherin positive optional;
+v_TWIST1 v_E_cadherin negative optional;
+v_ZEB1 v_E_cadherin positive optional;
+v_ZEB1 v_E_cadherin negative optional;
+v_SUFU v_GLI positive optional;
+v_SUFU v_GLI negative optional;
+v_GLI v_HHIP positive optional;
+v_GLI v_HHIP negative optional;
+v_B_catenin_nuc v_LEF1 positive optional;
+v_B_catenin_nuc v_LEF1 negative optional;
+v_NFKB v_LEF1 positive optional;
+v_NFKB v_LEF1 negative optional;
+v_miR_34 v_LEF1 positive optional;
+v_miR_34 v_LEF1 negative optional;
+v_E_cadherin v_Migration positive optional;
+v_E_cadherin v_Migration negative optional;
+v_PAK1 v_Migration positive optional;
+v_PAK1 v_Migration negative optional;
+v_Damage v_NFKB positive optional;
+v_Damage v_NFKB negative optional;
+v_Rac1 v_PAK1 positive optional;
+v_Rac1 v_PAK1 negative optional;
+v_SHH v_Patched positive optional;
+v_SHH v_Patched negative optional;
+v_miR_200 v_Rac1 positive optional;
+v_miR_200 v_Rac1 negative optional;
+v_miR_34 v_Rac1 positive optional;
+v_miR_34 v_Rac1 negative optional;
+v_GLI v_SHH positive optional;
+v_GLI v_SHH negative optional;
+v_HHIP v_SHH positive optional;
+v_HHIP v_SHH negative optional;
+v_NFKB v_SHH positive optional;
+v_NFKB v_SHH negative optional;
+v_Patched v_SMO positive optional;
+v_Patched v_SMO negative optional;
+v_GLI v_SNAI1 positive optional;
+v_GLI v_SNAI1 negative optional;
+v_SNAI1 v_SNAI1 positive optional;
+v_SNAI1 v_SNAI1 negative optional;
+v_miR_34 v_SNAI1 positive optional;
+v_miR_34 v_SNAI1 negative optional;
+v_B_catenin_nuc v_SNAI2 positive optional;
+v_B_catenin_nuc v_SNAI2 negative optional;
+v_GLI v_SNAI2 positive optional;
+v_GLI v_SNAI2 negative optional;
+v_TWIST1 v_SNAI2 positive optional;
+v_TWIST1 v_SNAI2 negative optional;
+v_SMO v_SUFU positive optional;
+v_SMO v_SUFU negative optional;
+v_B_catenin_TCF4 v_TGFb_secr positive optional;
+v_B_catenin_TCF4 v_TGFb_secr negative optional;
+v_GLI v_TGFb_secr positive optional;
+v_GLI v_TGFb_secr negative optional;
+v_miR_200 v_TGFb_secr positive optional;
+v_miR_200 v_TGFb_secr negative optional;
+v_NFKB v_TWIST1 positive optional;
+v_NFKB v_TWIST1 negative optional;
+v_SNAI1 v_TWIST1 positive optional;
+v_SNAI1 v_TWIST1 negative optional;
+v_miR_34 v_TWIST1 positive optional;
+v_miR_34 v_TWIST1 negative optional;
+v_B_catenin_TCF4 v_ZEB1 positive optional;
+v_B_catenin_TCF4 v_ZEB1 negative optional;
+v_GLI v_ZEB1 positive optional;
+v_GLI v_ZEB1 negative optional;
+v_LEF1 v_ZEB1 positive optional;
+v_LEF1 v_ZEB1 negative optional;
+v_SNAI1 v_ZEB1 positive optional;
+v_SNAI1 v_ZEB1 negative optional;
+v_SNAI2 v_ZEB1 positive optional;
+v_SNAI2 v_ZEB1 negative optional;
+v_TWIST1 v_ZEB1 positive optional;
+v_TWIST1 v_ZEB1 negative optional;
+v_miR_200 v_ZEB1 positive optional;
+v_miR_200 v_ZEB1 negative optional;
+v_SNAI1 v_miR_200 positive optional;
+v_SNAI1 v_miR_200 negative optional;
+v_ZEB1 v_miR_200 positive optional;
+v_ZEB1 v_miR_200 negative optional;
+v_SNAI1 v_miR_34 positive optional;
+v_SNAI1 v_miR_34 negative optional;
+v_ZEB1 v_miR_34 positive optional;
+v_ZEB1 v_miR_34 negative optional;
+v_Damage v_Damage positive optional;
+v_neighbor v_neighbor positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 1 and
+  v_NFKB = 0 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+$FIN0 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 1 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 0 and
+  v_E_cadherin = 0 and
+  v_GLI = 1 and
+  v_HHIP = 1 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+$FIN1 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 0 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 1 and
+  v_NFKB = 1 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 0 and
+  v_SHH = 1 and
+  v_SMO = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 1 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 1 and
+  v_miR_200 = 0 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+$FIN2 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 1 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 0 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 1 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 1 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 0
+};
+
+$FIN3 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 1 and
+  v_NFKB = 1 and
+  v_PAK1 = 0 and
+  v_Patched = 0 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 1 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 1 and
+  v_miR_200 = 0 and
+  v_miR_34 = 1 and
+  v_neighbor = 0
+};
+
+$FIN4 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 1 and
+  v_LEF1 = 0 and
+  v_Migration = 1 and
+  v_NFKB = 1 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 0
+};
+
+$FIN5 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 1 and
+  v_SHH = 1 and
+  v_SMO = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 0 and
+  v_miR_34 = 0 and
+  v_neighbor = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 0 and
+  v_E_cadherin = 0 and
+  v_GLI = 1 and
+  v_HHIP = 1 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 1 and
+  v_Patched = 1 and
+  v_Rac1 = 0 and
+  v_SHH = 1 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 1 and
+  v_miR_200 = 0 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+$FIN6 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 0 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 1 and
+  v_LEF1 = 0 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 1 and
+  v_Patched = 1 and
+  v_Rac1 = 0 and
+  v_SHH = 1 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 1 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 0 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 1 and
+  v_NFKB = 0 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 0 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+$FIN7 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 0 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 1 and
+  v_neighbor = 1
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 0 and
+  v_E_cadherin = 0 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 1 and
+  v_Migration = 1 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 1 and
+  v_miR_200 = 0 and
+  v_miR_34 = 0 and
+  v_neighbor = 0
+};
+
+$FIN8 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 0 and
+  v_E_cadherin = 1 and
+  v_GLI = 1 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 0 and
+  v_NFKB = 0 and
+  v_PAK1 = 0 and
+  v_Patched = 0 and
+  v_Rac1 = 1 and
+  v_SHH = 0 and
+  v_SMO = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_SUFU = 1 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AJ = 0 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 1 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 0 and
+  v_LEF1 = 0 and
+  v_Migration = 1 and
+  v_NFKB = 1 and
+  v_PAK1 = 0 and
+  v_Patched = 1 and
+  v_Rac1 = 1 and
+  v_SHH = 1 and
+  v_SMO = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 1 and
+  v_TWIST1 = 0 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 0 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+$FIN9 := {
+  v_AJ = 1 and
+  v_B_catenin_TCF4 = 0 and
+  v_B_catenin_nuc = 0 and
+  v_Damage = 1 and
+  v_E_cadherin = 1 and
+  v_GLI = 0 and
+  v_HHIP = 1 and
+  v_LEF1 = 1 and
+  v_Migration = 0 and
+  v_NFKB = 1 and
+  v_PAK1 = 1 and
+  v_Patched = 0 and
+  v_Rac1 = 0 and
+  v_SHH = 0 and
+  v_SMO = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_SUFU = 0 and
+  v_TGFb_secr = 0 and
+  v_TWIST1 = 1 and
+  v_ZEB1 = 0 and
+  v_miR_200 = 1 and
+  v_miR_34 = 0 and
+  v_neighbor = 1
+};
+
+$NoKnockDowns := {
+  KO(v_AJ) = 0 and
+  KO(v_B_catenin_TCF4) = 0 and
+  KO(v_B_catenin_nuc) = 0 and
+  KO(v_Damage) = 0 and
+  KO(v_E_cadherin) = 0 and
+  KO(v_GLI) = 0 and
+  KO(v_HHIP) = 0 and
+  KO(v_LEF1) = 0 and
+  KO(v_Migration) = 0 and
+  KO(v_NFKB) = 0 and
+  KO(v_PAK1) = 0 and
+  KO(v_Patched) = 0 and
+  KO(v_Rac1) = 0 and
+  KO(v_SHH) = 0 and
+  KO(v_SMO) = 0 and
+  KO(v_SNAI1) = 0 and
+  KO(v_SNAI2) = 0 and
+  KO(v_SUFU) = 0 and
+  KO(v_TGFb_secr) = 0 and
+  KO(v_TWIST1) = 0 and
+  KO(v_ZEB1) = 0 and
+  KO(v_miR_200) = 0 and
+  KO(v_miR_34) = 0 and
+  KO(v_neighbor) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AJ) = 0 and
+  FE(v_B_catenin_TCF4) = 0 and
+  FE(v_B_catenin_nuc) = 0 and
+  FE(v_Damage) = 0 and
+  FE(v_E_cadherin) = 0 and
+  FE(v_GLI) = 0 and
+  FE(v_HHIP) = 0 and
+  FE(v_LEF1) = 0 and
+  FE(v_Migration) = 0 and
+  FE(v_NFKB) = 0 and
+  FE(v_PAK1) = 0 and
+  FE(v_Patched) = 0 and
+  FE(v_Rac1) = 0 and
+  FE(v_SHH) = 0 and
+  FE(v_SMO) = 0 and
+  FE(v_SNAI1) = 0 and
+  FE(v_SNAI2) = 0 and
+  FE(v_SUFU) = 0 and
+  FE(v_TGFb_secr) = 0 and
+  FE(v_TWIST1) = 0 and
+  FE(v_ZEB1) = 0 and
+  FE(v_miR_200) = 0 and
+  FE(v_miR_34) = 0 and
+  FE(v_neighbor) = 0
+};
+

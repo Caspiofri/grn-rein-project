@@ -1,0 +1,1002 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AKT1[-+] (0..17); v_AKT2[-+] (0..17); v_Apoptosis[-+] (0..17); v_CDH1[-+] (0..17); v_CDH2[-+] (0..17); v_CTNNB1[-+] (0..17); v_CellCycleArrest[-+] (0..17); v_DKK1[-+] (0..17); v_DNAdamage[-+] (0..17); v_ECM[-+] (0..17); v_EMT[-+] (0..17); v_ERK[-+] (0..17); v_GF[-+] (0..17); v_Invasion[-+] (0..17); v_Metastasis[-+] (0..17); v_Migration[-+] (0..17); v_NICD[-+] (0..17); v_SMAD[-+] (0..17); v_SNAI1[-+] (0..17); v_SNAI2[-+] (0..17); v_TGFbeta[-+] (0..17); v_TWIST1[-+] (0..17); v_VIM[-+] (0..17); v_ZEB1[-+] (0..17); v_ZEB2[-+] (0..17); v_miR200[-+] (0..17); v_miR203[-+] (0..17); v_miR34[-+] (0..17); v_p21[-+] (0..17); v_p53[-+] (0..17); v_p63[-+] (0..17); v_p73[-+] (0..17);
+
+v_SNAI2 v_ZEB1 positive;
+v_CTNNB1 v_ZEB1 positive;
+v_NICD v_ZEB1 positive;
+v_SNAI1 v_ZEB1 positive;
+v_miR200 v_ZEB1 negative;
+v_TWIST1 v_ZEB1 positive;
+v_miR34 v_NICD negative;
+v_miR200 v_NICD negative;
+v_p63 v_NICD negative;
+v_ECM v_NICD positive;
+v_p73 v_NICD negative;
+v_p53 v_NICD negative;
+v_NICD v_p63 negative;
+v_miR203 v_p63 negative;
+v_AKT2 v_p63 negative;
+v_DNAdamage v_p63 positive;
+v_AKT1 v_p63 negative;
+v_p53 v_p63 negative;
+v_SNAI2 v_miR200 negative;
+v_SNAI1 v_miR200 negative;
+v_AKT2 v_miR200 negative;
+v_ZEB2 v_miR200 negative;
+v_p63 v_miR200 positive;
+v_p73 v_miR200 positive;
+v_ZEB1 v_miR200 negative;
+v_p53 v_miR200 positive;
+v_Migration v_Metastasis positive;
+v_AKT2 v_p73 negative;
+v_DNAdamage v_p73 positive;
+v_AKT1 v_p73 negative;
+v_ZEB1 v_p73 negative;
+v_p53 v_p73 negative;
+v_TGFbeta v_SMAD positive;
+v_miR203 v_SMAD negative;
+v_miR200 v_SMAD negative;
+v_SNAI2 v_ZEB2 positive;
+v_NICD v_ZEB2 positive;
+v_miR203 v_ZEB2 negative;
+v_SNAI1 v_ZEB2 positive;
+v_miR200 v_ZEB2 negative;
+v_TWIST1 v_ZEB2 positive;
+v_CTNNB1 v_TWIST1 positive;
+v_NICD v_TWIST1 positive;
+v_SNAI1 v_TWIST1 positive;
+v_GF v_GF positive;
+v_CDH2 v_GF positive;
+v_CDH1 v_GF negative;
+v_CDH2 v_EMT positive;
+v_CDH1 v_EMT negative;
+v_CTNNB1 v_TGFbeta negative;
+v_NICD v_TGFbeta positive;
+v_ECM v_TGFbeta positive;
+v_SMAD v_p21 positive;
+v_NICD v_p21 positive;
+v_ERK v_p21 negative;
+v_AKT2 v_p21 positive;
+v_p63 v_p21 positive;
+v_p73 v_p21 positive;
+v_AKT1 v_p21 negative;
+v_p53 v_p21 positive;
+v_SNAI1 v_miR203 negative;
+v_ZEB2 v_miR203 negative;
+v_ZEB1 v_miR203 negative;
+v_p53 v_miR203 positive;
+v_CTNNB1 v_p53 positive;
+v_SNAI2 v_p53 negative;
+v_NICD v_p53 positive;
+v_miR34 v_p53 positive;
+v_AKT2 v_p53 negative;
+v_DNAdamage v_p53 positive;
+v_p73 v_p53 negative;
+v_AKT1 v_p53 negative;
+v_miR34 v_CellCycleArrest positive;
+v_miR203 v_CellCycleArrest positive;
+v_p21 v_CellCycleArrest positive;
+v_ZEB2 v_CellCycleArrest positive;
+v_miR200 v_CellCycleArrest positive;
+v_AKT1 v_CellCycleArrest negative;
+v_SNAI2 v_CDH1 negative;
+v_SNAI1 v_CDH1 negative;
+v_AKT2 v_CDH1 negative;
+v_ZEB2 v_CDH1 negative;
+v_TWIST1 v_CDH1 negative;
+v_ZEB1 v_CDH1 negative;
+v_SMAD v_Invasion positive;
+v_CTNNB1 v_Invasion positive;
+v_CDH2 v_Invasion positive;
+v_CTNNB1 v_SNAI1 negative;
+v_NICD v_SNAI1 positive;
+v_miR203 v_SNAI1 negative;
+v_miR34 v_SNAI1 negative;
+v_TWIST1 v_SNAI1 positive;
+v_p53 v_SNAI1 negative;
+v_SMAD v_ERK positive;
+v_NICD v_ERK positive;
+v_GF v_ERK positive;
+v_CDH2 v_ERK positive;
+v_AKT1 v_ERK negative;
+v_TGFbeta v_AKT2 positive;
+v_miR34 v_AKT2 negative;
+v_miR203 v_AKT2 negative;
+v_GF v_AKT2 positive;
+v_TWIST1 v_AKT2 positive;
+v_CDH2 v_AKT2 positive;
+v_p53 v_AKT2 negative;
+v_TWIST1 v_CDH2 positive;
+v_Invasion v_Migration positive;
+v_EMT v_Migration positive;
+v_ERK v_Migration positive;
+v_AKT2 v_Migration positive;
+v_miR200 v_Migration negative;
+v_VIM v_Migration positive;
+v_p63 v_Migration negative;
+v_AKT1 v_Migration negative;
+v_CTNNB1 v_VIM positive;
+v_ZEB2 v_VIM positive;
+v_CTNNB1 v_SNAI2 positive;
+v_NICD v_SNAI2 positive;
+v_miR203 v_SNAI2 negative;
+v_miR200 v_SNAI2 negative;
+v_TWIST1 v_SNAI2 positive;
+v_p53 v_SNAI2 negative;
+v_SNAI1 v_miR34 negative;
+v_AKT2 v_miR34 positive;
+v_ZEB2 v_miR34 negative;
+v_p63 v_miR34 negative;
+v_p73 v_miR34 positive;
+v_AKT1 v_miR34 negative;
+v_ZEB1 v_miR34 negative;
+v_p53 v_miR34 positive;
+v_miR34 v_CTNNB1 negative;
+v_miR200 v_CTNNB1 negative;
+v_p63 v_CTNNB1 negative;
+v_CDH2 v_CTNNB1 negative;
+v_AKT1 v_CTNNB1 negative;
+v_DKK1 v_CTNNB1 negative;
+v_CDH1 v_CTNNB1 negative;
+v_p53 v_CTNNB1 negative;
+v_miR34 v_Apoptosis positive;
+v_ERK v_Apoptosis negative;
+v_miR200 v_Apoptosis positive;
+v_ZEB2 v_Apoptosis negative;
+v_p63 v_Apoptosis positive;
+v_p73 v_Apoptosis positive;
+v_AKT1 v_Apoptosis negative;
+v_p53 v_Apoptosis positive;
+v_CTNNB1 v_DKK1 positive;
+v_NICD v_DKK1 positive;
+v_CTNNB1 v_AKT1 positive;
+v_NICD v_AKT1 positive;
+v_TGFbeta v_AKT1 positive;
+v_miR34 v_AKT1 negative;
+v_GF v_AKT1 positive;
+v_CDH2 v_AKT1 positive;
+v_p53 v_AKT1 negative;
+v_CDH1 v_AKT1 negative;
+v_DNAdamage v_DNAdamage positive optional;
+v_ECM v_ECM positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 1 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 0 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 1 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 0 and
+  v_VIM = 0 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 1 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN0 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 0 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 0 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 1 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 0 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 0 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 0 and
+  v_miR200 = 0 and
+  v_miR203 = 1 and
+  v_miR34 = 0 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN1 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 1 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 0 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 0 and
+  v_EMT = 0 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 0 and
+  v_VIM = 0 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 0 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 1 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 0 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 0 and
+  v_miR200 = 1 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN2 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 1 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 0 and
+  v_EMT = 1 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 0 and
+  v_VIM = 0 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 1 and
+  v_miR203 = 0 and
+  v_miR34 = 1 and
+  v_p21 = 1 and
+  v_p53 = 1 and
+  v_p63 = 0 and
+  v_p73 = 1
+};
+
+$FIN3 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 0 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 1 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 0 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 0 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 1 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 1 and
+  v_VIM = 0 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 0 and
+  v_miR200 = 1 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 1 and
+  v_p73 = 0
+};
+
+$FIN4 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 1 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 1 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 1 and
+  v_ECM = 0 and
+  v_EMT = 1 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 1 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 0 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 1 and
+  v_miR34 = 1 and
+  v_p21 = 0 and
+  v_p53 = 1 and
+  v_p63 = 1 and
+  v_p73 = 0
+};
+
+$FIN5 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 0 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 1 and
+  v_ECM = 0 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 1 and
+  v_VIM = 0 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 0 and
+  v_ERK = 0 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 1 and
+  v_SMAD = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 0 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 1 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN6 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 0 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 0 and
+  v_ERK = 0 and
+  v_GF = 1 and
+  v_Invasion = 0 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 1 and
+  v_VIM = 0 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 1 and
+  v_miR200 = 1 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN7 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 0 and
+  v_Apoptosis = 1 and
+  v_CDH1 = 0 and
+  v_CDH2 = 0 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 0 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 0 and
+  v_NICD = 0 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 0 and
+  v_VIM = 1 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 0 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$FIN8 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 1 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AKT1 = 1 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 1 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 1 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 0 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 0 and
+  v_GF = 0 and
+  v_Invasion = 0 and
+  v_Metastasis = 0 and
+  v_Migration = 0 and
+  v_NICD = 1 and
+  v_SMAD = 0 and
+  v_SNAI1 = 0 and
+  v_SNAI2 = 0 and
+  v_TGFbeta = 0 and
+  v_TWIST1 = 0 and
+  v_VIM = 1 and
+  v_ZEB1 = 0 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 1 and
+  v_p21 = 1 and
+  v_p53 = 0 and
+  v_p63 = 1 and
+  v_p73 = 0
+};
+
+$FIN9 := {
+  v_AKT1 = 0 and
+  v_AKT2 = 1 and
+  v_Apoptosis = 0 and
+  v_CDH1 = 0 and
+  v_CDH2 = 1 and
+  v_CTNNB1 = 0 and
+  v_CellCycleArrest = 1 and
+  v_DKK1 = 1 and
+  v_DNAdamage = 0 and
+  v_ECM = 1 and
+  v_EMT = 1 and
+  v_ERK = 1 and
+  v_GF = 1 and
+  v_Invasion = 1 and
+  v_Metastasis = 1 and
+  v_Migration = 1 and
+  v_NICD = 1 and
+  v_SMAD = 1 and
+  v_SNAI1 = 1 and
+  v_SNAI2 = 1 and
+  v_TGFbeta = 1 and
+  v_TWIST1 = 1 and
+  v_VIM = 1 and
+  v_ZEB1 = 1 and
+  v_ZEB2 = 1 and
+  v_miR200 = 0 and
+  v_miR203 = 0 and
+  v_miR34 = 0 and
+  v_p21 = 0 and
+  v_p53 = 0 and
+  v_p63 = 0 and
+  v_p73 = 0
+};
+
+$NoKnockDowns := {
+  KO(v_AKT1) = 0 and
+  KO(v_AKT2) = 0 and
+  KO(v_Apoptosis) = 0 and
+  KO(v_CDH1) = 0 and
+  KO(v_CDH2) = 0 and
+  KO(v_CTNNB1) = 0 and
+  KO(v_CellCycleArrest) = 0 and
+  KO(v_DKK1) = 0 and
+  KO(v_DNAdamage) = 0 and
+  KO(v_ECM) = 0 and
+  KO(v_EMT) = 0 and
+  KO(v_ERK) = 0 and
+  KO(v_GF) = 0 and
+  KO(v_Invasion) = 0 and
+  KO(v_Metastasis) = 0 and
+  KO(v_Migration) = 0 and
+  KO(v_NICD) = 0 and
+  KO(v_SMAD) = 0 and
+  KO(v_SNAI1) = 0 and
+  KO(v_SNAI2) = 0 and
+  KO(v_TGFbeta) = 0 and
+  KO(v_TWIST1) = 0 and
+  KO(v_VIM) = 0 and
+  KO(v_ZEB1) = 0 and
+  KO(v_ZEB2) = 0 and
+  KO(v_miR200) = 0 and
+  KO(v_miR203) = 0 and
+  KO(v_miR34) = 0 and
+  KO(v_p21) = 0 and
+  KO(v_p53) = 0 and
+  KO(v_p63) = 0 and
+  KO(v_p73) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AKT1) = 0 and
+  FE(v_AKT2) = 0 and
+  FE(v_Apoptosis) = 0 and
+  FE(v_CDH1) = 0 and
+  FE(v_CDH2) = 0 and
+  FE(v_CTNNB1) = 0 and
+  FE(v_CellCycleArrest) = 0 and
+  FE(v_DKK1) = 0 and
+  FE(v_DNAdamage) = 0 and
+  FE(v_ECM) = 0 and
+  FE(v_EMT) = 0 and
+  FE(v_ERK) = 0 and
+  FE(v_GF) = 0 and
+  FE(v_Invasion) = 0 and
+  FE(v_Metastasis) = 0 and
+  FE(v_Migration) = 0 and
+  FE(v_NICD) = 0 and
+  FE(v_SMAD) = 0 and
+  FE(v_SNAI1) = 0 and
+  FE(v_SNAI2) = 0 and
+  FE(v_TGFbeta) = 0 and
+  FE(v_TWIST1) = 0 and
+  FE(v_VIM) = 0 and
+  FE(v_ZEB1) = 0 and
+  FE(v_ZEB2) = 0 and
+  FE(v_miR200) = 0 and
+  FE(v_miR203) = 0 and
+  FE(v_miR34) = 0 and
+  FE(v_p21) = 0 and
+  FE(v_p53) = 0 and
+  FE(v_p63) = 0 and
+  FE(v_p73) = 0
+};
+

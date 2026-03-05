@@ -1,0 +1,945 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_AP[-+] (0..17); v_AgAb[-+] (0..17); v_BC[-+] (0..17); v_Bb[-+] (0..17); v_C[-+] (0..17); v_DCI[-+] (0..17); v_DCII[-+] (0..17); v_DP[-+] (0..17); v_EC[-+] (0..17); v_IFNgI[-+] (0..17); v_IFNgII[-+] (0..17); v_IL10I[-+] (0..17); v_IL10II[-+] (0..17); v_IL12I[-+] (0..17); v_IL12II[-+] (0..17); v_IL4I[-+] (0..17); v_IL4II[-+] (0..17); v_IgA[-+] (0..17); v_IgG[-+] (0..17); v_MPI[-+] (0..17); v_NE[-+] (0..17); v_Oag[-+] (0..17); v_PH[-+] (0..17); v_PIC[-+] (0..17); v_T0[-+] (0..17); v_TTSSI[-+] (0..17); v_TTSSII[-+] (0..17); v_Th1I[-+] (0..17); v_Th1II[-+] (0..17); v_Th2I[-+] (0..17); v_Th2II[-+] (0..17); v_TrI[-+] (0..17); v_TrII[-+] (0..17);
+
+v_TrI v_IL10I positive;
+v_Th2I v_IL10I positive;
+v_MPI v_IL10I positive;
+v_TTSSI v_IL10I positive;
+v_Th1II v_Th1I positive;
+v_IgG v_TTSSI negative;
+v_Bb v_TTSSI positive;
+v_IgA v_TTSSI negative;
+v_Th2II v_Th2I positive;
+v_IgG v_AP positive;
+v_MPI v_AP positive;
+v_C v_AP positive;
+v_Th1I v_AP positive;
+v_AgAb v_AP positive;
+v_Bb v_AP positive;
+v_IFNgI v_IFNgII positive;
+v_IFNgI v_DCI positive;
+v_PIC v_DCI positive;
+v_Bb v_DCI positive;
+v_DP v_PIC positive;
+v_EC v_PIC positive;
+v_AP v_PIC positive;
+v_IL10I v_PIC negative;
+v_PIC v_NE positive;
+v_Bb v_Oag positive;
+v_IFNgI v_MPI positive;
+v_PIC v_MPI positive;
+v_Bb v_MPI positive;
+v_MPI v_IFNgI positive;
+v_IL4I v_IFNgI negative;
+v_Th1I v_IFNgI positive;
+v_DCI v_IFNgI positive;
+v_IL10I v_IFNgI negative;
+v_T0 v_TrII positive;
+v_DCII v_TrII positive;
+v_Bb v_EC positive;
+v_T0 v_IL12II positive;
+v_DCII v_IL12II positive;
+v_IL4II v_IL12II negative;
+v_PH v_Bb negative;
+v_Bb v_Bb positive;
+v_T0 v_IL12I positive;
+v_DCII v_IL12I positive;
+v_IL4II v_IL12I negative;
+v_DCII v_T0 positive;
+v_TrII v_TrI positive;
+v_IL4II v_IL4I positive;
+v_DCI v_DCII positive;
+v_AP v_PH positive;
+v_Bb v_PH positive;
+v_T0 v_BC positive;
+v_BC v_BC positive;
+v_IgG v_AgAb positive;
+v_Bb v_AgAb positive;
+v_IgA v_AgAb positive;
+v_TTSSI v_DP positive;
+v_NE v_DP positive;
+v_T0 v_Th2II positive;
+v_DCII v_Th2II positive;
+v_IL12II v_Th2II negative;
+v_IgG v_IgG positive;
+v_BC v_IgG positive;
+v_IL10I v_IL10II positive;
+v_BC v_IgA positive;
+v_Bb v_IgA positive;
+v_IgA v_IgA positive;
+v_TTSSI v_TTSSII positive;
+v_T0 v_Th1II positive;
+v_DCII v_Th1II positive;
+v_IL12II v_Th1II positive;
+v_T0 v_IL4II positive;
+v_DCII v_IL4II positive;
+v_IFNgII v_IL4II negative;
+v_IL12II v_IL4II negative;
+v_Th2II v_IL4II positive;
+v_IgG v_C positive;
+v_Oag v_C negative;
+v_AgAb v_C positive;
+v_Bb v_C positive;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 0 and
+  v_Bb = 0 and
+  v_C = 1 and
+  v_DCI = 1 and
+  v_DCII = 1 and
+  v_DP = 1 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 1 and
+  v_IL10II = 1 and
+  v_IL12I = 1 and
+  v_IL12II = 0 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 0 and
+  v_MPI = 0 and
+  v_NE = 1 and
+  v_Oag = 0 and
+  v_PH = 1 and
+  v_PIC = 0 and
+  v_T0 = 1 and
+  v_TTSSI = 1 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 1 and
+  v_Th2I = 1 and
+  v_Th2II = 0 and
+  v_TrI = 1 and
+  v_TrII = 1
+};
+
+$FIN0 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 1 and
+  v_DCI = 0 and
+  v_DCII = 1 and
+  v_DP = 1 and
+  v_EC = 0 and
+  v_IFNgI = 1 and
+  v_IFNgII = 0 and
+  v_IL10I = 1 and
+  v_IL10II = 0 and
+  v_IL12I = 1 and
+  v_IL12II = 1 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 1 and
+  v_IgG = 0 and
+  v_MPI = 1 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 1 and
+  v_T0 = 1 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 1 and
+  v_Th1II = 1 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+$FIN1 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 1 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 1 and
+  v_IL4I = 0 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 1 and
+  v_NE = 0 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 1 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 1
+};
+
+$FIN2 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 1 and
+  v_C = 1 and
+  v_DCI = 1 and
+  v_DCII = 1 and
+  v_DP = 0 and
+  v_EC = 1 and
+  v_IFNgI = 1 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 0 and
+  v_IL12I = 1 and
+  v_IL12II = 0 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 1 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 1 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 1 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+$FIN3 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 1 and
+  v_C = 1 and
+  v_DCI = 1 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 0 and
+  v_IL10II = 1 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 1 and
+  v_IgG = 1 and
+  v_MPI = 1 and
+  v_NE = 1 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 1 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 0 and
+  v_Bb = 0 and
+  v_C = 1 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 1 and
+  v_IL12I = 0 and
+  v_IL12II = 1 and
+  v_IL4I = 0 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 0 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 1 and
+  v_TTSSI = 1 and
+  v_TTSSII = 1 and
+  v_Th1I = 1 and
+  v_Th1II = 1 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 1 and
+  v_TrII = 0
+};
+
+$FIN4 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 1 and
+  v_DP = 1 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 1 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 0 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 1 and
+  v_TTSSI = 1 and
+  v_TTSSII = 1 and
+  v_Th1I = 1 and
+  v_Th1II = 1 and
+  v_Th2I = 0 and
+  v_Th2II = 1 and
+  v_TrI = 1 and
+  v_TrII = 1
+};
+
+$FIN5 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 1 and
+  v_C = 1 and
+  v_DCI = 0 and
+  v_DCII = 1 and
+  v_DP = 0 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 1 and
+  v_IL12I = 1 and
+  v_IL12II = 0 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 0 and
+  v_MPI = 0 and
+  v_NE = 1 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 1 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 1 and
+  v_Th2II = 0 and
+  v_TrI = 1 and
+  v_TrII = 1
+};
+
+$FIN6 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 1 and
+  v_IL12I = 1 and
+  v_IL12II = 1 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 1 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 1 and
+  v_Th1II = 1 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 1 and
+  v_TrII = 1
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_AP = 0 and
+  v_AgAb = 1 and
+  v_BC = 0 and
+  v_Bb = 1 and
+  v_C = 1 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 0 and
+  v_IL12I = 1 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 1 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 1 and
+  v_T0 = 0 and
+  v_TTSSI = 1 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 1 and
+  v_Th2I = 1 and
+  v_Th2II = 1 and
+  v_TrI = 0 and
+  v_TrII = 1
+};
+
+$FIN7 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_AP = 1 and
+  v_AgAb = 1 and
+  v_BC = 1 and
+  v_Bb = 1 and
+  v_C = 1 and
+  v_DCI = 1 and
+  v_DCII = 1 and
+  v_DP = 1 and
+  v_EC = 0 and
+  v_IFNgI = 1 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 1 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 1 and
+  v_NE = 1 and
+  v_Oag = 0 and
+  v_PH = 1 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 1 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+$FIN8 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 0 and
+  v_Bb = 1 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 1 and
+  v_EC = 1 and
+  v_IFNgI = 0 and
+  v_IFNgII = 1 and
+  v_IL10I = 1 and
+  v_IL10II = 0 and
+  v_IL12I = 1 and
+  v_IL12II = 0 and
+  v_IL4I = 1 and
+  v_IL4II = 1 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 1 and
+  v_NE = 1 and
+  v_Oag = 1 and
+  v_PH = 0 and
+  v_PIC = 1 and
+  v_T0 = 0 and
+  v_TTSSI = 1 and
+  v_TTSSII = 1 and
+  v_Th1I = 0 and
+  v_Th1II = 1 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 1 and
+  v_TrII = 0
+};
+
+$FIN9 := {
+  v_AP = 0 and
+  v_AgAb = 0 and
+  v_BC = 1 and
+  v_Bb = 0 and
+  v_C = 0 and
+  v_DCI = 0 and
+  v_DCII = 0 and
+  v_DP = 0 and
+  v_EC = 0 and
+  v_IFNgI = 0 and
+  v_IFNgII = 0 and
+  v_IL10I = 0 and
+  v_IL10II = 0 and
+  v_IL12I = 0 and
+  v_IL12II = 0 and
+  v_IL4I = 0 and
+  v_IL4II = 0 and
+  v_IgA = 0 and
+  v_IgG = 1 and
+  v_MPI = 0 and
+  v_NE = 0 and
+  v_Oag = 0 and
+  v_PH = 0 and
+  v_PIC = 0 and
+  v_T0 = 0 and
+  v_TTSSI = 0 and
+  v_TTSSII = 0 and
+  v_Th1I = 0 and
+  v_Th1II = 0 and
+  v_Th2I = 0 and
+  v_Th2II = 0 and
+  v_TrI = 0 and
+  v_TrII = 0
+};
+
+$NoKnockDowns := {
+  KO(v_AP) = 0 and
+  KO(v_AgAb) = 0 and
+  KO(v_BC) = 0 and
+  KO(v_Bb) = 0 and
+  KO(v_C) = 0 and
+  KO(v_DCI) = 0 and
+  KO(v_DCII) = 0 and
+  KO(v_DP) = 0 and
+  KO(v_EC) = 0 and
+  KO(v_IFNgI) = 0 and
+  KO(v_IFNgII) = 0 and
+  KO(v_IL10I) = 0 and
+  KO(v_IL10II) = 0 and
+  KO(v_IL12I) = 0 and
+  KO(v_IL12II) = 0 and
+  KO(v_IL4I) = 0 and
+  KO(v_IL4II) = 0 and
+  KO(v_IgA) = 0 and
+  KO(v_IgG) = 0 and
+  KO(v_MPI) = 0 and
+  KO(v_NE) = 0 and
+  KO(v_Oag) = 0 and
+  KO(v_PH) = 0 and
+  KO(v_PIC) = 0 and
+  KO(v_T0) = 0 and
+  KO(v_TTSSI) = 0 and
+  KO(v_TTSSII) = 0 and
+  KO(v_Th1I) = 0 and
+  KO(v_Th1II) = 0 and
+  KO(v_Th2I) = 0 and
+  KO(v_Th2II) = 0 and
+  KO(v_TrI) = 0 and
+  KO(v_TrII) = 0
+};
+
+$NoOverExpression := {
+  FE(v_AP) = 0 and
+  FE(v_AgAb) = 0 and
+  FE(v_BC) = 0 and
+  FE(v_Bb) = 0 and
+  FE(v_C) = 0 and
+  FE(v_DCI) = 0 and
+  FE(v_DCII) = 0 and
+  FE(v_DP) = 0 and
+  FE(v_EC) = 0 and
+  FE(v_IFNgI) = 0 and
+  FE(v_IFNgII) = 0 and
+  FE(v_IL10I) = 0 and
+  FE(v_IL10II) = 0 and
+  FE(v_IL12I) = 0 and
+  FE(v_IL12II) = 0 and
+  FE(v_IL4I) = 0 and
+  FE(v_IL4II) = 0 and
+  FE(v_IgA) = 0 and
+  FE(v_IgG) = 0 and
+  FE(v_MPI) = 0 and
+  FE(v_NE) = 0 and
+  FE(v_Oag) = 0 and
+  FE(v_PH) = 0 and
+  FE(v_PIC) = 0 and
+  FE(v_T0) = 0 and
+  FE(v_TTSSI) = 0 and
+  FE(v_TTSSII) = 0 and
+  FE(v_Th1I) = 0 and
+  FE(v_Th1II) = 0 and
+  FE(v_Th2I) = 0 and
+  FE(v_Th2II) = 0 and
+  FE(v_TrI) = 0 and
+  FE(v_TrII) = 0
+};
+

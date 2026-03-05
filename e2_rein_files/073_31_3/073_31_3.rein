@@ -1,0 +1,992 @@
+// Synchronous dynamics
+directive updates sync;
+
+// Default regulation conditions
+directive regulation legacy;
+
+v_Cd19[-+] (0..17); v_Cd19_gene[-+] (0..17); v_Cebpa[-+] (0..17); v_Cebpa_ER[-+] (0..17); v_Cebpa_gene[-+] (0..17); v_Cebpb[-+] (0..17); v_Csf1[-+] (0..17); v_Csf1r[-+] (0..17); v_Csf1r_act[-+] (0..17); v_E2a[-+] (0..17); v_E2a_gene[-+] (0..17); v_E2a_prot_Active[-+] (0..17); v_Ebf1[-+] (0..17); v_Ebf1_gene[-+] (0..17); v_Egr2[-+] (0..17); v_Ets1[-+] (0..17); v_Flt3[-+] (0..17); v_Foxo1[-+] (0..17); v_Foxo1_gene[-+] (0..17); v_Gfi1[-+] (0..17); v_Id2[-+] (0..17); v_Ikzf1[-+] (0..17); v_Il7[-+] (0..17); v_Il7r_act[-+] (0..17); v_Il7ra[-+] (0..17); v_Mac1[-+] (0..17); v_Mac1_gene[-+] (0..17); v_Mef2c[-+] (0..17); v_Pax5[-+] (0..17); v_Pax5_gene[-+] (0..17); v_Pax5_prot_active[-+] (0..17); v_Runx1[-+] (0..17); v_Spi1_b1[-+] (0..17); v_Spi1_b2[-+] (0..17);
+
+v_Spi1_b1 v_Mac1_gene positive;
+v_Spi1_b2 v_Mac1_gene positive;
+v_Mac1_gene v_Mac1 positive;
+v_Cebpb v_Id2 positive;
+v_Cebpa v_Id2 positive;
+v_Spi1_b1 v_Id2 positive;
+v_Gfi1 v_Id2 negative;
+v_Ebf1 v_Id2 negative;
+v_Spi1_b1 v_Egr2 positive;
+v_Spi1_b2 v_Egr2 positive;
+v_Gfi1 v_Egr2 negative;
+v_Pax5_prot_active v_Egr2 positive;
+v_Cebpb v_Cebpb positive;
+v_Cebpa v_Cebpb positive;
+v_Spi1_b1 v_Cebpb positive;
+v_Spi1_b2 v_Cebpb positive;
+v_Spi1_b1 v_Cebpa_gene positive;
+v_Runx1 v_Cebpa_gene positive;
+v_Foxo1 v_Cebpa_gene negative;
+v_Cebpa_gene v_Cebpa positive;
+v_Cebpa_ER v_Cebpa positive;
+v_Spi1_b1 v_Csf1r positive;
+v_Pax5_prot_active v_Csf1r negative;
+v_Csf1r v_Csf1r_act positive;
+v_Csf1 v_Csf1r_act positive;
+v_Cebpb v_Spi1_b1 positive;
+v_Cebpa v_Spi1_b1 positive;
+v_Csf1r_act v_Spi1_b1 positive;
+v_Spi1_b1 v_Spi1_b1 positive optional;
+v_Spi1_b1 v_Spi1_b1 negative optional;
+v_Spi1_b2 v_Spi1_b1 positive;
+v_Runx1 v_Spi1_b1 positive optional;
+v_Runx1 v_Spi1_b1 negative optional;
+v_Gfi1 v_Spi1_b1 positive optional;
+v_Gfi1 v_Spi1_b1 negative optional;
+v_Ikzf1 v_Spi1_b1 positive optional;
+v_Ikzf1 v_Spi1_b1 negative optional;
+v_Foxo1 v_Spi1_b1 positive optional;
+v_Foxo1 v_Spi1_b1 negative optional;
+v_Ebf1 v_Spi1_b1 positive;
+v_Cebpb v_Spi1_b2 positive;
+v_Cebpa v_Spi1_b2 positive;
+v_Csf1r_act v_Spi1_b2 positive;
+v_Spi1_b1 v_Spi1_b2 positive;
+v_Runx1 v_Spi1_b2 positive;
+v_Gfi1 v_Spi1_b2 negative;
+v_Ikzf1 v_Spi1_b2 negative;
+v_Foxo1 v_Spi1_b2 negative;
+v_Spi1_b1 v_Runx1 positive;
+v_Egr2 v_Gfi1 negative;
+v_Cebpa v_Gfi1 positive;
+v_Ikzf1 v_Gfi1 positive;
+v_Pax5_prot_active v_Gfi1 positive;
+v_Mef2c v_Ikzf1 positive;
+v_Pax5_prot_active v_Ikzf1 positive;
+v_Spi1_b1 v_Flt3 positive;
+v_Ikzf1 v_Flt3 positive;
+v_Pax5_prot_active v_Flt3 negative;
+v_Cebpb v_Mef2c negative;
+v_Cebpa v_Mef2c negative;
+v_Spi1_b1 v_Mef2c positive;
+v_E2a_prot_Active v_Ets1 positive;
+v_Cebpb v_Il7ra negative;
+v_Cebpa v_Il7ra negative;
+v_Spi1_b1 v_Il7ra positive;
+v_Mef2c v_Il7ra positive;
+v_Foxo1 v_Il7ra positive;
+v_Ebf1 v_Il7ra positive;
+v_Il7ra v_Il7r_act positive;
+v_Il7 v_Il7r_act positive;
+v_Spi1_b1 v_E2a_gene positive;
+v_Ikzf1 v_E2a_gene positive;
+v_Ebf1 v_E2a_gene positive;
+v_Pax5_prot_active v_E2a_gene positive;
+v_E2a_gene v_E2a positive;
+v_Id2 v_E2a_prot_Active negative;
+v_E2a v_E2a_prot_Active positive;
+v_Cebpb v_Foxo1_gene negative;
+v_Cebpa v_Foxo1_gene negative;
+v_E2a_prot_Active v_Foxo1_gene positive;
+v_Foxo1_gene v_Foxo1 positive;
+v_Ebf1_gene v_Ebf1 positive;
+v_Cebpb v_Ebf1_gene negative;
+v_Cebpa v_Ebf1_gene negative;
+v_Spi1_b1 v_Ebf1_gene positive;
+v_Runx1 v_Ebf1_gene positive;
+v_Ets1 v_Ebf1_gene positive;
+v_Il7r_act v_Ebf1_gene positive;
+v_E2a_prot_Active v_Ebf1_gene positive;
+v_Foxo1 v_Ebf1_gene positive;
+v_Ebf1 v_Ebf1_gene positive;
+v_Pax5_prot_active v_Ebf1_gene positive;
+v_Cebpb v_Pax5_gene negative;
+v_Cebpa v_Pax5_gene negative;
+v_Ebf1 v_Pax5_gene positive;
+v_Pax5_gene v_Pax5 positive;
+v_Id2 v_Pax5_prot_active negative;
+v_Pax5 v_Pax5_prot_active positive;
+v_Cebpa v_Cd19_gene negative;
+v_Pax5_prot_active v_Cd19_gene positive;
+v_Cd19_gene v_Cd19 positive;
+v_Cebpa_ER v_Cebpa_ER positive optional;
+v_Csf1 v_Csf1 positive optional;
+v_Il7 v_Il7 positive optional;
+
+
+// =====================
+// Experiments
+// =====================
+
+// Experiment 0
+#Experiment0[0] |= $INIT0 "initial state";
+#Experiment0[0] |= $NoKnockDowns "no knockdowns";
+#Experiment0[0] |= $NoOverExpression "no overexpression";
+#Experiment0[15] |= $FIN0 "final state";
+
+$INIT0 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 1 and
+  v_E2a = 1 and
+  v_E2a_gene = 1 and
+  v_E2a_prot_Active = 1 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 1 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 1 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 1 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 1 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 0
+};
+
+$FIN0 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+// Experiment 1
+#Experiment1[0] |= $INIT1 "initial state";
+#Experiment1[0] |= $NoKnockDowns "no knockdowns";
+#Experiment1[0] |= $NoOverExpression "no overexpression";
+#Experiment1[15] |= $FIN1 "final state";
+
+$INIT1 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 1 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 1 and
+  v_E2a_gene = 1 and
+  v_E2a_prot_Active = 1 and
+  v_Ebf1 = 1 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 1 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 1 and
+  v_Il7 = 0 and
+  v_Il7r_act = 1 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 1 and
+  v_Pax5 = 1 and
+  v_Pax5_gene = 1 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 0
+};
+
+$FIN1 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 1 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+// Experiment 2
+#Experiment2[0] |= $INIT2 "initial state";
+#Experiment2[0] |= $NoKnockDowns "no knockdowns";
+#Experiment2[0] |= $NoOverExpression "no overexpression";
+#Experiment2[15] |= $FIN2 "final state";
+
+$INIT2 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 0 and
+  v_Csf1 = 1 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 1 and
+  v_E2a = 1 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 1 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 1 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 1 and
+  v_Il7ra = 1 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 1 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 1
+};
+
+$FIN2 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 1 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+// Experiment 3
+#Experiment3[0] |= $INIT3 "initial state";
+#Experiment3[0] |= $NoKnockDowns "no knockdowns";
+#Experiment3[0] |= $NoOverExpression "no overexpression";
+#Experiment3[15] |= $FIN3 "final state";
+
+$INIT3 := {
+  v_Cd19 = 1 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 1 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 1 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 1 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 1 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 1 and
+  v_Pax5_prot_active = 1 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+$FIN3 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+// Experiment 4
+#Experiment4[0] |= $INIT4 "initial state";
+#Experiment4[0] |= $NoKnockDowns "no knockdowns";
+#Experiment4[0] |= $NoOverExpression "no overexpression";
+#Experiment4[15] |= $FIN4 "final state";
+
+$INIT4 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 1 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 1 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 1 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 1 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 1 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 1 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 1 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+$FIN4 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 1 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 1 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+// Experiment 5
+#Experiment5[0] |= $INIT5 "initial state";
+#Experiment5[0] |= $NoKnockDowns "no knockdowns";
+#Experiment5[0] |= $NoOverExpression "no overexpression";
+#Experiment5[15] |= $FIN5 "final state";
+
+$INIT5 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 1 and
+  v_E2a = 0 and
+  v_E2a_gene = 1 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 1 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 1 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 1 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 1 and
+  v_Pax5_gene = 1 and
+  v_Pax5_prot_active = 1 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+$FIN5 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+// Experiment 6
+#Experiment6[0] |= $INIT6 "initial state";
+#Experiment6[0] |= $NoKnockDowns "no knockdowns";
+#Experiment6[0] |= $NoOverExpression "no overexpression";
+#Experiment6[15] |= $FIN6 "final state";
+
+$INIT6 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 0 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 1 and
+  v_Ets1 = 1 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 1 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 1 and
+  v_Il7ra = 1 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 1 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 1 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+$FIN6 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+// Experiment 7
+#Experiment7[0] |= $INIT7 "initial state";
+#Experiment7[0] |= $NoKnockDowns "no knockdowns";
+#Experiment7[0] |= $NoOverExpression "no overexpression";
+#Experiment7[15] |= $FIN7 "final state";
+
+$INIT7 := {
+  v_Cd19 = 1 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 1 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 1 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 1 and
+  v_Flt3 = 1 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 1 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 1 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+$FIN7 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 1 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+// Experiment 8
+#Experiment8[0] |= $INIT8 "initial state";
+#Experiment8[0] |= $NoKnockDowns "no knockdowns";
+#Experiment8[0] |= $NoOverExpression "no overexpression";
+#Experiment8[15] |= $FIN8 "final state";
+
+$INIT8 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 1 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 1 and
+  v_Foxo1 = 1 and
+  v_Foxo1_gene = 1 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 1 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 1 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+$FIN8 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 1 and
+  v_Cebpb = 1 and
+  v_Csf1 = 0 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 1 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 1 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 1 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 1 and
+  v_Spi1_b2 = 1
+};
+
+// Experiment 9
+#Experiment9[0] |= $INIT9 "initial state";
+#Experiment9[0] |= $NoKnockDowns "no knockdowns";
+#Experiment9[0] |= $NoOverExpression "no overexpression";
+#Experiment9[15] |= $FIN9 "final state";
+
+$INIT9 := {
+  v_Cd19 = 1 and
+  v_Cd19_gene = 1 and
+  v_Cebpa = 1 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 1 and
+  v_Csf1r = 1 and
+  v_Csf1r_act = 0 and
+  v_E2a = 1 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 1 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 1 and
+  v_Egr2 = 1 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 1 and
+  v_Foxo1_gene = 1 and
+  v_Gfi1 = 1 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 1 and
+  v_Mef2c = 1 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 1 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 1
+};
+
+$FIN9 := {
+  v_Cd19 = 0 and
+  v_Cd19_gene = 0 and
+  v_Cebpa = 0 and
+  v_Cebpa_ER = 0 and
+  v_Cebpa_gene = 0 and
+  v_Cebpb = 0 and
+  v_Csf1 = 1 and
+  v_Csf1r = 0 and
+  v_Csf1r_act = 0 and
+  v_E2a = 0 and
+  v_E2a_gene = 0 and
+  v_E2a_prot_Active = 0 and
+  v_Ebf1 = 0 and
+  v_Ebf1_gene = 0 and
+  v_Egr2 = 0 and
+  v_Ets1 = 0 and
+  v_Flt3 = 0 and
+  v_Foxo1 = 0 and
+  v_Foxo1_gene = 0 and
+  v_Gfi1 = 0 and
+  v_Id2 = 0 and
+  v_Ikzf1 = 0 and
+  v_Il7 = 0 and
+  v_Il7r_act = 0 and
+  v_Il7ra = 0 and
+  v_Mac1 = 0 and
+  v_Mac1_gene = 0 and
+  v_Mef2c = 0 and
+  v_Pax5 = 0 and
+  v_Pax5_gene = 0 and
+  v_Pax5_prot_active = 0 and
+  v_Runx1 = 0 and
+  v_Spi1_b1 = 0 and
+  v_Spi1_b2 = 0
+};
+
+$NoKnockDowns := {
+  KO(v_Cd19) = 0 and
+  KO(v_Cd19_gene) = 0 and
+  KO(v_Cebpa) = 0 and
+  KO(v_Cebpa_ER) = 0 and
+  KO(v_Cebpa_gene) = 0 and
+  KO(v_Cebpb) = 0 and
+  KO(v_Csf1) = 0 and
+  KO(v_Csf1r) = 0 and
+  KO(v_Csf1r_act) = 0 and
+  KO(v_E2a) = 0 and
+  KO(v_E2a_gene) = 0 and
+  KO(v_E2a_prot_Active) = 0 and
+  KO(v_Ebf1) = 0 and
+  KO(v_Ebf1_gene) = 0 and
+  KO(v_Egr2) = 0 and
+  KO(v_Ets1) = 0 and
+  KO(v_Flt3) = 0 and
+  KO(v_Foxo1) = 0 and
+  KO(v_Foxo1_gene) = 0 and
+  KO(v_Gfi1) = 0 and
+  KO(v_Id2) = 0 and
+  KO(v_Ikzf1) = 0 and
+  KO(v_Il7) = 0 and
+  KO(v_Il7r_act) = 0 and
+  KO(v_Il7ra) = 0 and
+  KO(v_Mac1) = 0 and
+  KO(v_Mac1_gene) = 0 and
+  KO(v_Mef2c) = 0 and
+  KO(v_Pax5) = 0 and
+  KO(v_Pax5_gene) = 0 and
+  KO(v_Pax5_prot_active) = 0 and
+  KO(v_Runx1) = 0 and
+  KO(v_Spi1_b1) = 0 and
+  KO(v_Spi1_b2) = 0
+};
+
+$NoOverExpression := {
+  FE(v_Cd19) = 0 and
+  FE(v_Cd19_gene) = 0 and
+  FE(v_Cebpa) = 0 and
+  FE(v_Cebpa_ER) = 0 and
+  FE(v_Cebpa_gene) = 0 and
+  FE(v_Cebpb) = 0 and
+  FE(v_Csf1) = 0 and
+  FE(v_Csf1r) = 0 and
+  FE(v_Csf1r_act) = 0 and
+  FE(v_E2a) = 0 and
+  FE(v_E2a_gene) = 0 and
+  FE(v_E2a_prot_Active) = 0 and
+  FE(v_Ebf1) = 0 and
+  FE(v_Ebf1_gene) = 0 and
+  FE(v_Egr2) = 0 and
+  FE(v_Ets1) = 0 and
+  FE(v_Flt3) = 0 and
+  FE(v_Foxo1) = 0 and
+  FE(v_Foxo1_gene) = 0 and
+  FE(v_Gfi1) = 0 and
+  FE(v_Id2) = 0 and
+  FE(v_Ikzf1) = 0 and
+  FE(v_Il7) = 0 and
+  FE(v_Il7r_act) = 0 and
+  FE(v_Il7ra) = 0 and
+  FE(v_Mac1) = 0 and
+  FE(v_Mac1_gene) = 0 and
+  FE(v_Mef2c) = 0 and
+  FE(v_Pax5) = 0 and
+  FE(v_Pax5_gene) = 0 and
+  FE(v_Pax5_prot_active) = 0 and
+  FE(v_Runx1) = 0 and
+  FE(v_Spi1_b1) = 0 and
+  FE(v_Spi1_b2) = 0
+};
+

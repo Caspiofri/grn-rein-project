@@ -1,0 +1,2841 @@
+{
+  "source_file": "/home/ofri/caspiofri/grn-rein-project/models/experiment_2_stress/177_11_0.aeon",
+  "model_name": "177_11_0",
+  "total_genes": 11,
+  "total_update_functions": 11,
+  "total_inputs": 0,
+  "input_nodes": [],
+  "genes": [
+    {
+      "name": "v_CEBPA",
+      "is_input": false,
+      "update_function": "v_CEBPA & !(v_GATA1 & v_FOG1 & v_SCL)",
+      "regulators": [
+        {
+          "name": "v_CEBPA",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_FOG1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_SCL",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 4,
+      "truth_table": {
+        "v_CEBPA=0, v_FOG1=0, v_GATA1=0, v_SCL=0": 0,
+        "v_CEBPA=0, v_FOG1=0, v_GATA1=0, v_SCL=1": 0,
+        "v_CEBPA=0, v_FOG1=0, v_GATA1=1, v_SCL=0": 0,
+        "v_CEBPA=0, v_FOG1=0, v_GATA1=1, v_SCL=1": 0,
+        "v_CEBPA=0, v_FOG1=1, v_GATA1=0, v_SCL=0": 0,
+        "v_CEBPA=0, v_FOG1=1, v_GATA1=0, v_SCL=1": 0,
+        "v_CEBPA=0, v_FOG1=1, v_GATA1=1, v_SCL=0": 0,
+        "v_CEBPA=0, v_FOG1=1, v_GATA1=1, v_SCL=1": 0,
+        "v_CEBPA=1, v_FOG1=0, v_GATA1=0, v_SCL=0": 1,
+        "v_CEBPA=1, v_FOG1=0, v_GATA1=0, v_SCL=1": 1,
+        "v_CEBPA=1, v_FOG1=0, v_GATA1=1, v_SCL=0": 1,
+        "v_CEBPA=1, v_FOG1=0, v_GATA1=1, v_SCL=1": 1,
+        "v_CEBPA=1, v_FOG1=1, v_GATA1=0, v_SCL=0": 1,
+        "v_CEBPA=1, v_FOG1=1, v_GATA1=0, v_SCL=1": 1,
+        "v_CEBPA=1, v_FOG1=1, v_GATA1=1, v_SCL=0": 1,
+        "v_CEBPA=1, v_FOG1=1, v_GATA1=1, v_SCL=1": 0
+      },
+      "truth_table_size": 16
+    },
+    {
+      "name": "v_EGR_NAB",
+      "is_input": false,
+      "update_function": "v_PU1 & v_JUN & !v_GFI1",
+      "regulators": [
+        {
+          "name": "v_GFI1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_JUN",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 3,
+      "truth_table": {
+        "v_GFI1=0, v_JUN=0, v_PU1=0": 0,
+        "v_GFI1=0, v_JUN=0, v_PU1=1": 0,
+        "v_GFI1=0, v_JUN=1, v_PU1=0": 0,
+        "v_GFI1=0, v_JUN=1, v_PU1=1": 1,
+        "v_GFI1=1, v_JUN=0, v_PU1=0": 0,
+        "v_GFI1=1, v_JUN=0, v_PU1=1": 0,
+        "v_GFI1=1, v_JUN=1, v_PU1=0": 0,
+        "v_GFI1=1, v_JUN=1, v_PU1=1": 0
+      },
+      "truth_table_size": 8
+    },
+    {
+      "name": "v_EKLF",
+      "is_input": false,
+      "update_function": "v_GATA1 & !v_FLI1",
+      "regulators": [
+        {
+          "name": "v_FLI1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_FLI1=0, v_GATA1=0": 0,
+        "v_FLI1=0, v_GATA1=1": 1,
+        "v_FLI1=1, v_GATA1=0": 0,
+        "v_FLI1=1, v_GATA1=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_FLI1",
+      "is_input": false,
+      "update_function": "v_GATA1 & !v_EKLF",
+      "regulators": [
+        {
+          "name": "v_EKLF",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_EKLF=0, v_GATA1=0": 0,
+        "v_EKLF=0, v_GATA1=1": 1,
+        "v_EKLF=1, v_GATA1=0": 0,
+        "v_EKLF=1, v_GATA1=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_FOG1",
+      "is_input": false,
+      "update_function": "v_GATA1",
+      "regulators": [
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 1,
+      "truth_table": {
+        "v_GATA1=0": 0,
+        "v_GATA1=1": 1
+      },
+      "truth_table_size": 2
+    },
+    {
+      "name": "v_GATA1",
+      "is_input": false,
+      "update_function": "(v_GATA1 | v_GATA2 | v_FLI1) & !v_PU1",
+      "regulators": [
+        {
+          "name": "v_FLI1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA2",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 4,
+      "truth_table": {
+        "v_FLI1=0, v_GATA1=0, v_GATA2=0, v_PU1=0": 0,
+        "v_FLI1=0, v_GATA1=0, v_GATA2=0, v_PU1=1": 0,
+        "v_FLI1=0, v_GATA1=0, v_GATA2=1, v_PU1=0": 1,
+        "v_FLI1=0, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_FLI1=0, v_GATA1=1, v_GATA2=0, v_PU1=0": 1,
+        "v_FLI1=0, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_FLI1=0, v_GATA1=1, v_GATA2=1, v_PU1=0": 1,
+        "v_FLI1=0, v_GATA1=1, v_GATA2=1, v_PU1=1": 0,
+        "v_FLI1=1, v_GATA1=0, v_GATA2=0, v_PU1=0": 1,
+        "v_FLI1=1, v_GATA1=0, v_GATA2=0, v_PU1=1": 0,
+        "v_FLI1=1, v_GATA1=0, v_GATA2=1, v_PU1=0": 1,
+        "v_FLI1=1, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_FLI1=1, v_GATA1=1, v_GATA2=0, v_PU1=0": 1,
+        "v_FLI1=1, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_FLI1=1, v_GATA1=1, v_GATA2=1, v_PU1=0": 1,
+        "v_FLI1=1, v_GATA1=1, v_GATA2=1, v_PU1=1": 0
+      },
+      "truth_table_size": 16
+    },
+    {
+      "name": "v_GATA2",
+      "is_input": false,
+      "update_function": "v_GATA2 & !(v_GATA1 & v_FOG1) & !v_PU1",
+      "regulators": [
+        {
+          "name": "v_FOG1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA2",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 4,
+      "truth_table": {
+        "v_FOG1=0, v_GATA1=0, v_GATA2=0, v_PU1=0": 0,
+        "v_FOG1=0, v_GATA1=0, v_GATA2=0, v_PU1=1": 0,
+        "v_FOG1=0, v_GATA1=0, v_GATA2=1, v_PU1=0": 1,
+        "v_FOG1=0, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_FOG1=0, v_GATA1=1, v_GATA2=0, v_PU1=0": 0,
+        "v_FOG1=0, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_FOG1=0, v_GATA1=1, v_GATA2=1, v_PU1=0": 1,
+        "v_FOG1=0, v_GATA1=1, v_GATA2=1, v_PU1=1": 0,
+        "v_FOG1=1, v_GATA1=0, v_GATA2=0, v_PU1=0": 0,
+        "v_FOG1=1, v_GATA1=0, v_GATA2=0, v_PU1=1": 0,
+        "v_FOG1=1, v_GATA1=0, v_GATA2=1, v_PU1=0": 1,
+        "v_FOG1=1, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_FOG1=1, v_GATA1=1, v_GATA2=0, v_PU1=0": 0,
+        "v_FOG1=1, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_FOG1=1, v_GATA1=1, v_GATA2=1, v_PU1=0": 0,
+        "v_FOG1=1, v_GATA1=1, v_GATA2=1, v_PU1=1": 0
+      },
+      "truth_table_size": 16
+    },
+    {
+      "name": "v_GFI1",
+      "is_input": false,
+      "update_function": "v_CEBPA & !v_EGR_NAB",
+      "regulators": [
+        {
+          "name": "v_CEBPA",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_EGR_NAB",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_CEBPA=0, v_EGR_NAB=0": 0,
+        "v_CEBPA=0, v_EGR_NAB=1": 0,
+        "v_CEBPA=1, v_EGR_NAB=0": 1,
+        "v_CEBPA=1, v_EGR_NAB=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_JUN",
+      "is_input": false,
+      "update_function": "v_PU1 & !v_GFI1",
+      "regulators": [
+        {
+          "name": "v_GFI1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_GFI1=0, v_PU1=0": 0,
+        "v_GFI1=0, v_PU1=1": 1,
+        "v_GFI1=1, v_PU1=0": 0,
+        "v_GFI1=1, v_PU1=1": 0
+      },
+      "truth_table_size": 4
+    },
+    {
+      "name": "v_PU1",
+      "is_input": false,
+      "update_function": "(v_CEBPA | v_PU1) & !(v_GATA1 | v_GATA2)",
+      "regulators": [
+        {
+          "name": "v_CEBPA",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_GATA2",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 4,
+      "truth_table": {
+        "v_CEBPA=0, v_GATA1=0, v_GATA2=0, v_PU1=0": 0,
+        "v_CEBPA=0, v_GATA1=0, v_GATA2=0, v_PU1=1": 1,
+        "v_CEBPA=0, v_GATA1=0, v_GATA2=1, v_PU1=0": 0,
+        "v_CEBPA=0, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_CEBPA=0, v_GATA1=1, v_GATA2=0, v_PU1=0": 0,
+        "v_CEBPA=0, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_CEBPA=0, v_GATA1=1, v_GATA2=1, v_PU1=0": 0,
+        "v_CEBPA=0, v_GATA1=1, v_GATA2=1, v_PU1=1": 0,
+        "v_CEBPA=1, v_GATA1=0, v_GATA2=0, v_PU1=0": 1,
+        "v_CEBPA=1, v_GATA1=0, v_GATA2=0, v_PU1=1": 1,
+        "v_CEBPA=1, v_GATA1=0, v_GATA2=1, v_PU1=0": 0,
+        "v_CEBPA=1, v_GATA1=0, v_GATA2=1, v_PU1=1": 0,
+        "v_CEBPA=1, v_GATA1=1, v_GATA2=0, v_PU1=0": 0,
+        "v_CEBPA=1, v_GATA1=1, v_GATA2=0, v_PU1=1": 0,
+        "v_CEBPA=1, v_GATA1=1, v_GATA2=1, v_PU1=0": 0,
+        "v_CEBPA=1, v_GATA1=1, v_GATA2=1, v_PU1=1": 0
+      },
+      "truth_table_size": 16
+    },
+    {
+      "name": "v_SCL",
+      "is_input": false,
+      "update_function": "v_GATA1 & !v_PU1",
+      "regulators": [
+        {
+          "name": "v_GATA1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        },
+        {
+          "name": "v_PU1",
+          "edge_signs": [
+            "positive",
+            "negative"
+          ]
+        }
+      ],
+      "num_regulators": 2,
+      "truth_table": {
+        "v_GATA1=0, v_PU1=0": 0,
+        "v_GATA1=0, v_PU1=1": 0,
+        "v_GATA1=1, v_PU1=0": 1,
+        "v_GATA1=1, v_PU1=1": 0
+      },
+      "truth_table_size": 4
+    }
+  ],
+  "experiment_params": {
+    "N": 10,
+    "K": 15
+  },
+  "experiments": [
+    {
+      "id": 0,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 1,
+        "v_FLI1": 1,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 1,
+        "v_GFI1": 1,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 1,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 1,
+        "v_FLI1": 1,
+        "v_FOG1": 0,
+        "v_GATA1": 1,
+        "v_GATA2": 1,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 1
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 0,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 1,
+        "v_FLI1": 1,
+        "v_FOG1": 1,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 1,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 1,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 1,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 1
+      },
+      "final_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 1,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 1,
+        "v_FLI1": 1,
+        "v_FOG1": 0,
+        "v_GATA1": 1,
+        "v_GATA2": 1,
+        "v_GFI1": 1,
+        "v_JUN": 1,
+        "v_PU1": 0,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 0,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 1,
+          "v_JUN": 1,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 1,
+        "v_FLI1": 1,
+        "v_FOG1": 0,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 0,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 1,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 1,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 1,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 1,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 1,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 1,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 1,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 1,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 0,
+        "v_GATA2": 1,
+        "v_GFI1": 0,
+        "v_JUN": 1,
+        "v_PU1": 0,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 0,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 1,
+        "v_GATA1": 1,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 0,
+        "v_SCL": 1
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 1,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 1,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 1,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 1,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 1,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 1,
+          "v_GATA1": 1,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 0,
+          "v_SCL": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "K": 15,
+      "init_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 0,
+        "v_FLI1": 1,
+        "v_FOG1": 1,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 0,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "final_state": {
+        "v_CEBPA": 0,
+        "v_EGR_NAB": 1,
+        "v_EKLF": 0,
+        "v_FLI1": 0,
+        "v_FOG1": 0,
+        "v_GATA1": 0,
+        "v_GATA2": 0,
+        "v_GFI1": 0,
+        "v_JUN": 1,
+        "v_PU1": 1,
+        "v_SCL": 0
+      },
+      "full_trajectory": [
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 1,
+          "v_FOG1": 1,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 0,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 0,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        },
+        {
+          "v_CEBPA": 0,
+          "v_EGR_NAB": 1,
+          "v_EKLF": 0,
+          "v_FLI1": 0,
+          "v_FOG1": 0,
+          "v_GATA1": 0,
+          "v_GATA2": 0,
+          "v_GFI1": 0,
+          "v_JUN": 1,
+          "v_PU1": 1,
+          "v_SCL": 0
+        }
+      ]
+    }
+  ]
+}

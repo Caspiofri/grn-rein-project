@@ -15,7 +15,7 @@ Outputs:
   - Console report
 """
 
-import json, csv, itertools, os, sys
+import json, csv, itertools, os, sys, random, re
 from pathlib import Path
 
 
@@ -82,6 +82,79 @@ def compute_rein_truth_table(rein_L, gene_data):
         state = dict(zip(reg_names, combo))
         result.append(int(evaluate_R(rein_L, state, activators, repressors)))
     return result
+
+
+def _aeon_to_python(expr: str) -> str:
+    py = expr.replace("!", "not ")
+    py = py.replace("&", " and ")
+    py = py.replace("|", " or ")
+    return re.sub(r"\s+", " ", py).strip()
+
+
+def simulate_gt(gt_json, initial_state, K):
+    """Simulate ground-truth model for K steps, return final state."""
+    update_functions = {}
+    input_nodes = []
+    for gene in gt_json['genes']:
+        if gene['is_input']:
+            input_nodes.append(gene['name'])
+        else:
+            update_functions[gene['name']] = gene['update_function']
+    current = dict(initial_state)
+    for _ in range(K):
+        next_state = {}
+        for g in input_nodes:
+            next_state[g] = current[g]
+        for g, expr in update_functions.items():
+            py_expr = _aeon_to_python(expr)
+            result = eval(py_expr, {"__builtins__": {}}, current)
+            next_state[g] = int(bool(result))
+        current = next_state
+    return current
+
+
+def simulate_rein(gt_json, rein_lv, initial_state, K):
+    """Simulate RE:IN synthesized model for K steps using L-values."""
+    input_nodes = []
+    non_input_genes = []
+    for gene in gt_json['genes']:
+        if gene['is_input']:
+            input_nodes.append(gene['name'])
+        else:
+            non_input_genes.append(gene)
+    current = dict(initial_state)
+    for _ in range(K):
+        next_state = {}
+        for g in input_nodes:
+            next_state[g] = current[g]
+        for gene in non_input_genes:
+            name = gene['name']
+            L = rein_lv.get(name)
+            if L is None:
+                next_state[name] = current[name]
+                continue
+            activators = sorted([r['name'] for r in gene['regulators']
+                                 if r['edge_signs'][0] == 'positive'])
+            repressors = sorted([r['name'] for r in gene['regulators']
+                                 if r['edge_signs'][0] == 'negative'])
+            state_for_gene = {r['name']: current[r['name']] for r in gene['regulators']}
+            next_state[name] = int(evaluate_R(L, state_for_gene, activators, repressors))
+        current = next_state
+    return current
+
+
+def functional_accuracy(gt_json, rein_lv, K, n_samples=200, seed=42):
+    """Simulate both models from fresh random initial states, compare final states."""
+    rng = random.Random(seed)
+    all_genes = sorted([g['name'] for g in gt_json['genes']])
+    matches = 0
+    for _ in range(n_samples):
+        state = {g: rng.randint(0, 1) for g in all_genes}
+        gt_final = simulate_gt(gt_json, state, K)
+        rein_final = simulate_rein(gt_json, rein_lv, state, K)
+        if gt_final == rein_final:
+            matches += 1
+    return matches / n_samples
 
 
 def classify_gene_balance(gene_data):
@@ -163,6 +236,16 @@ def main():
             # Determine SAT status
             sat_status = 'SAT' if rein_lv else 'UNSAT/Timeout'
 
+            # Compute functional accuracy
+            if rein_lv:
+                func_acc = functional_accuracy(gt, rein_lv, K=K)
+                func_acc_str = f'{func_acc:.1%}'
+                print(f"  {model_id} K={K} N={N}: functional_accuracy = {func_acc:.1%}")
+            else:
+                func_acc = None
+                func_acc_str = 'N/A'
+                print(f"  {model_id} K={K} N={N}: UNSAT/Timeout")
+
             genes_total = 0
             genes_matched = 0
             genes_degenerate = 0
@@ -230,6 +313,7 @@ def main():
                 'K': K,
                 'N': N,
                 'sat_status': sat_status,
+                'functional_accuracy': func_acc_str,
                 'gene_recovery': f'{gene_recovery:.1%}',
                 'gene_recovery_raw': f'{genes_matched}/{genes_total}',
                 'degenerate_rate': f'{degenerate_rate:.1%}',
@@ -253,10 +337,11 @@ def main():
         print(f"\n{'─' * 80}")
         print(f"Model: {model_id}")
         print(f"{'─' * 80}")
-        print(f"{'K':>4} {'N':>4}  {'SAT':<14} {'Gene Recovery':<16} {'Degen Rate':<12} {'Balanced':<12} {'Unbalanced':<12}")
-        print(f"{'─' * 4} {'─' * 4}  {'─' * 14} {'─' * 16} {'─' * 12} {'─' * 12} {'─' * 12}")
+        print(f"{'K':>4} {'N':>4}  {'SAT':<14} {'Func.Acc':<10} {'Gene Recovery':<16} {'Degen Rate':<12} {'Balanced':<12} {'Unbalanced':<12}")
+        print(f"{'─' * 4} {'─' * 4}  {'─' * 14} {'─' * 10} {'─' * 16} {'─' * 12} {'─' * 12} {'─' * 12}")
         for r in model_rows:
             print(f"{r['K']:>4} {r['N']:>4}  {r['sat_status']:<14} "
+                  f"{r['functional_accuracy']:<10} "
                   f"{r['gene_recovery_raw']:>5} ({r['gene_recovery']:>5})  "
                   f"{r['degenerate_rate']:>10}  "
                   f"{r['balanced_detail']:>5} ({r['balanced_recovery']:>5})  "
@@ -309,8 +394,8 @@ def main():
     summary_path = base / 'e3_summary.csv'
     with open(summary_path, 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=[
-            'model_id', 'K', 'N', 'sat_status', 'gene_recovery',
-            'gene_recovery_raw', 'degenerate_rate',
+            'model_id', 'K', 'N', 'sat_status', 'functional_accuracy',
+            'gene_recovery', 'gene_recovery_raw', 'degenerate_rate',
             'balanced_recovery', 'unbalanced_recovery',
             'balanced_detail', 'unbalanced_detail',
         ])
